@@ -1,0 +1,325 @@
+* Ex 01 - Potências
+** a
+- [ ] Escreva uma função 'potencia' que recebe 2 argumentos: uma base 'b' e um expoente 'e' e que retorna a potência 'b elevado a e'. Primeiro escreva uma versão iterativa 'potI()' e depois escreva a sua versão recursiva 'potR()'
+  #+begin_src python :results output
+    def potI(b, e):
+        result = 1
+        for i in range(1, e+1):
+            result *= b
+        return result
+    print(potI(2, 4))
+
+
+    def potR(base, exponent):
+        if (exponent > 1):
+            return potR(base+base, exponent-1)
+        return base
+    print(potR(2, 4))
+
+    #prologo
+    ## ler base; ler expoente
+    #corpo
+    ##potencia = invocar funcao pot(base,exp)
+    ### resultado da funcao pot(base,exp) : res =base * base* .. * base, expoente vezes
+    #epilogo
+    ## escrever potencia
+  #+end_src
+
+  #+RESULTS:
+  : 16
+  : 16
+
+- [ ] Qual a base? 2
+- [ ] A potência é: 1024
+
+* Ex 02 - Fatorial
+** b
+- [ ] Escreva uma função 'fatorial' que recebe como argumento um número 'n' e que retorna o fatorial de 'n' usando uma definição recursiva para o calculo do resultado.
+  #+begin_src python :results output
+    def fatorial(n):
+        if (n > 1):
+            return n*fatorial(n-1)
+        return n
+    print(fatorial(5))
+    #resultado=n*n-1*n-2*...*1
+    #O fatorial é de  -2  é  1
+    #O fatorial é de  -1  é  1
+    #O fatorial é de  0  é  1
+    #O fatorial é de  1  é  1
+    #O fatorial é de  2  é  2
+  #+end_src
+
+  #+RESULTS:
+  : 120
+
+* Ex 03 - Pares
+** a
+- [ ] Escreva uma função 'par' que recebe como argumento um número 'n' e retorna True ou False conforme 'n' seja par ou impar.
+#+begin_src python :results output
+  def par(n):
+      if ((n%2) == 0):
+          return True
+      return False
+  print(par(23))
+#+end_src
+
+#+RESULTS:
+: False
+
+** b
+- [ ] Escreva um programa que lê números, e por cada um diga 'Número par' ou não escreve nenhuma mensagem conforme o número lido seja par ou não.
+
+O programa termina a leitura quando o número for menor ou igual a 0.
+#+begin_src python :results output
+  #Escreva um número: 5
+  #False
+  #Escreva um número: 8
+  #True
+  #Escreva um número: -4
+#+end_src
+** c
+- [ ] Melhore o seu programa permitindo que o número de leituras repetidas seja variável e não o número fixo 10.
+#+begin_src python :results output
+  #maximo=int(input("Escreva o número total de repetições: "))
+#+end_src
+
+* Ex 04 - Conjuntos
+** a
+- [ ] Considere o conjunto de frutas: maça, pera, pessego , morango, laranja. Escreva uma função que receba esse conjunto e uma outra palavra e diga se a palavra é uma fruta.
+  #+begin_src python :results output
+    def fazparte(palavra,fruteira):
+    # Primeira solução
+        for i in fruteira:
+            if palavra == i:
+                return True
+        return False
+
+    minhasFrutas = {"maça", "pera", "pessego", "morango", "laranja", "banana"}
+    fruta= input("Indique uma fruta: ")
+    res = fazparte(fruta, minhasFrutas) #testa se o elemento pertence ao Conj
+    if (res):
+      print("Faz parte da fruteira")
+    else :
+      print("Não faz parte da fruteira")
+  #+end_src
+
+  #+RESULTS:
+  : Indique uma fruta:
+
+* Ex 05 - Listas
+Considere a lista 'nums' com os valores: 1,3,5,7,8,12,21,45,67,86,99 e use essa lista 'nums' para testar cada uma das funções sobre listas pedidas nas alíneas seguintes
+** a
+- [ ] Escreva uma função para calcular a média de uma lista usando a função que já calcula o seu comprimento.
+#+begin_src python :results output
+  nums = [1,3,5,7,8,12,21,45,67,86,99]
+  notas = [14, 14, 14, 14, 14]
+  outraLista = [123, 12, 3, 67, 89, 21, 100]
+  maisLista = [ 129, 200, 340]
+
+  print(nums[1])
+  print(13 in nums)
+  print(len (nums))
+  nums.append(10) #junta um elemento no fim da lista
+  #nums=nums + [1,3,2,4] #acrescenta uma lista a outra lista
+  nums+= [1,3,2,4] #acrescenta uma lista a outra lista
+  print(nums)
+
+  def media(nums):
+      result = 0
+      for i in nums:
+          result += i
+      return result/len(nums)
+  print ("A media da lista dada é: ", media(notas))
+#+end_src
+
+#+RESULTS:
+: 3
+: False
+: 11
+: [1, 3, 5, 7, 8, 12, 21, 45, 67, 86, 99, 10, 1, 3, 2, 4]
+: A media da lista dada é:  14.0
+
+** b
+- [ ] Escreva uma função para calcular o máximo da lista.
+  #+begin_src python :results output
+    nums = [1,3,5,7,8,12,21,45,67,86,99]
+    notas = [14, 14, 14, 14, 14]
+    outraLista = [123, 12, 3, 67, 89, 21, 100]
+    maisLista = [ 129, 200, 340]
+    def maximo(l):
+        result = 0
+        for i in l:
+            if i > result:
+                result = i
+        return result
+
+    print("O maior da lista é:", maximo(outraLista))
+
+    def miNimo(l):
+        result = l[1]
+        for i in l:
+            if i < result:
+                result = i
+        return result
+
+    print("O meNor da lista é:", miNimo(outraLista))
+    print("O meNor da lista é:", miNimo(maisLista))
+    print("O meNor da lista é:", miNimo(notas))
+
+    print("Todos os elemeNtos da lista são iguais? ", miNimo(outraLista)==maximo(outraLista))
+  #+end_src
+
+  #+RESULTS:
+  : O maior da lista é: 123
+  : O meNor da lista é: 3
+  : O meNor da lista é: 129
+  : O meNor da lista é: 14
+  : Todos os elemeNtos da lista são iguais?  False
+
+** c
+- [ ] Escreva uma função que diga quantos números pares existem na lista.
+  #+begin_src python :results output
+    nums = [1,3,5,7,8,12,21,45,67,86,99]
+    notas = [14, 14, 14, 14, 14]
+    outraLista = [123, 12, 3, 67, 89, 21, 100]
+    maisLista = [ 129, 200, 340]
+    def coNtaPar(n):
+        count = 0
+        for i in n:
+            if (i%2 == 0):
+                count += 1
+        return count
+
+    print("O Número total de Pares da lista é:", coNtaPar(notas))
+    print("O Número total de Pares da lista é:", coNtaPar(maisLista))
+    print("O Número total de Pares da lista é:", coNtaPar(nums))
+
+
+  #+end_src
+
+  #+RESULTS:
+  : O Número total de Pares da lista é: 5
+  : O Número total de Pares da lista é: 2
+  : O Número total de Pares da lista é: 3
+
+** d
+- [ ] Escreva uma função que receba um número e uma lista e que conte quantos elementos são maior ou igual ao número dado.
+#+begin_src python :results output
+  nums = [1,3,5,7,8,12,21,45,67,86,99]
+  notas = [14, 14, 14, 14, 14]
+  outraLista = [123, 12, 3, 67, 89, 21, 100]
+  maisLista = [ 129, 200, 340]
+  def maiores(l,k):
+     res = 0
+     for i in l:
+        if (i > k) or (i == k):
+           res += 1
+     return res
+
+
+  k = 4
+  #k = int(input("Escreva um Número de referência:"))
+  ct = maiores(nums,k)
+  print(ct)
+#+end_src
+
+#+RESULTS:
+: 9
+
+* Ex 06 - Mais listas
+** a
+- [ ] Escreva uma função que receba uma lista e a imprima por ordem inversa, do último para o 1º elemento.
+  #+begin_src python :results output
+    l=[1,2,3,4,5,6,7,8,9,10]
+    l=["a","b","c","d"]
+    def inverte(l):
+        new_l = []
+        for i in l:
+            new_l.insert(0, i)
+        return new_l
+
+    print(inverte(l))
+  #+end_src
+
+  #+RESULTS:
+  : ['d', 'c', 'b', 'a']
+
+** b
+- [ ] Escreva um programa que leia numéros positivos, forme com eles uma lista e depois a imprima por ordem inversa.
+  #+begin_src python :results output
+    l = [1,2,3,4,5,6,7,8,9,10]
+    l = ["a","b","c","d"]
+    l = []
+    n = int(input("Escreva um número positivo: "))
+    while n>0:
+      ...
+
+    ### Mostra a lista invertida, usando a função inverte, sem usar a função inverte
+  #+end_src
+
+* Ex 7 - Lista de Coordenadas cartesianas
+** a
+- [ ] Escreva um programa que leia uma lista de pontos num plano cartesiano, definidos pela sua abcissa e ordenada, e no fim percorra a lista e indique o quadrante de cada ponto.
+#+begin_src python :results output
+  l=[]
+
+  #criação da lista
+  for conta in range(1,4):
+   ab= int(input("Insira a abcissa:"))
+   ord= int(input("Insira a ordenada:"))
+   coord= (ab,ord)
+   l.append(coord)
+
+  #processamento da lista
+  … elif ...:
+    print("Encontra-se no centro do gráfico")
+  else:
+    print("Encontra-se num dos eixos")
+  print(l)
+#+end_src
+** b
+- [ ] Calcule o declive da reta definida pelos dois primeiros pontos.
+  #+begin_src python :results output
+    (ab1,ord1) = l[0]
+    (ab2,ord2) = ...
+    declive = ...
+    print(declive)
+  #+end_src
+
+* Ex 8 - Nomes
+** a
+- [ ] Escreva um programa que leia um nome completo e escreva o ultimo apelido seguindo do primeiro nome. "pedro manuel rangel santos henriques" ==> "henriques, pedro"
+  #+begin_src python :results output
+
+  #+end_src
+
+* Ex 9 - Dicionários
+Considere a pauta de uma turma, que ao numero de cada aluno associa o seu nome e a sua nota pauta = {'a1':("joana sousa",12), 'a11':("rui cunha",19), 'a13':("ana moura",15)}
+** a
+- [ ] Escreva uma função que retorna o nome de um aluno dada a pauta e o número.
+  #+begin_src python :results output
+    pauta = {'a1':("joana sousa",12), 'a11':("rui cunha",19), 'a13':("ana moura",15)}
+
+    ...
+  #+end_src
+** b
+- [ ] Escreva uma função que retorna a nota de um aluno dada a pauta e o número.
+  #+begin_src python :results output
+
+  #+end_src
+** c
+- [ ] Escreva uma função que retorna a nota média da turma dada a pauta.
+  #+begin_src python :results output
+
+  #+end_src
+
+* Ex 10 - Jogo da Forca
+** a
+- [ ] Implemente o Jogo da Forca começando por ler a palavra a adivinhar.
+
+- [ ] Depois leia um carater de cada vez, e verifique se o jogador consegue adivinhar a palavra escondida. Por cada carater lido o programa deve dizer se o carater não pertence à palavra.
+
+- [ ] Ou então mostrar as posições onde ocorre esse carater na palavra, juntando-o aos carateres já descobertos. O jogo continua até o jogador ter formado a palavra completa ou até esgotar 10 tentativas.
+#+begin_src python :results output
+
+#+end_src

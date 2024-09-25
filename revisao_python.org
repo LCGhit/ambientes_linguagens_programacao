@@ -54,3 +54,39 @@ printStars()
 
   addSubMult()
 #+end_src
+
+* 05
+#+begin_src python :results output
+  import csv
+
+  f = csv.reader(open('alunos.csv'), delimiter=' ', quotechar='|')
+
+  def print_csv_lines(csv_in):
+      for row in csv_in:
+          print(', '.join(row))
+
+
+  def count_csv_lines(csv_in):
+      counter = 0
+      for row in csv_in:
+          counter += 1
+      return counter
+
+
+  df = open(r'alunos.csv', encoding='utf-8')
+  df = df.readlines()
+
+  new_dic = {}
+
+  headers = df[0].split(',')
+
+  for line in df:
+      new_line = line.split(',')
+      for i in range(0, len(new_line)):
+          new_dic[i] = new_line[i]
+
+  print(new_dic)
+#+end_src
+
+#+RESULTS:
+: {0: '"a100"', 1: '"Tude Searas"', 2: '"LEI"', 3: '20', 4: '17', 5: '8', 6: '14\n'}
