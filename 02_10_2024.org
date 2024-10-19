@@ -1,0 +1,97 @@
+* Ex 1
+#+begin_src python :results output
+  import re
+  txt = """
+  Ola Julio 123 eu sou a tua amiga Sara 456↵
+  Ola 456 desculpa mas eu nsou o 9315
+  Mário João
+  """
+
+  match_01 = re.findall('\\d+', txt)
+  print(match_01)
+  match_02 = re.findall('[A-Z][a-z]+', txt)
+  print(match_02)
+  match_03 = re.findall('[A-ZÁÀÉÈÍÌÓÒÚÙÃÕ][a-záàéèíìóòúùãõ]+', txt)
+  print(match_03)
+  match_04 = re.findall('[A-ZÁÀÉÈÍÌÓÒÚÙÃÕ][a-zá-ú]+', txt)
+  print(match_04)
+
+#+end_src
+
+#+RESULTS:
+: ['123', '456', '456', '9315']
+: ['Ola', 'Julio', 'Sara', 'Ola', 'Jo']
+: ['Ola', 'Julio', 'Sara', 'Ola', 'Mário', 'João']
+: ['Ola', 'Julio', 'Sara', 'Ola', 'Mário', 'João', 'Lö']
+
+#+begin_src python :results output
+  import re
+  txt = 'dui sapien [] .'
+  match_01 = re.findall('[A-za-z]', txt)
+  match_02 = re.findall('[A-z]', txt) #  will also catch []
+
+
+  print(match_01)
+  print(match_02)
+
+
+#+end_src
+
+#+RESULTS:
+: ['d', 'u', 'i', 's', 'a', 'p', 'i', 'e', 'n', '[', ']']
+: ['d', 'u', 'i', 's', 'a', 'p', 'i', 'e', 'n', '[', ']']
+
+#+begin_src python :results output
+  import re
+  txt = """
+  Ola Julio 123 eu sou a tua amiga Sara 456↵
+  Ola 456 desculpa mas eu nsou o 9315
+  Mário João
+  2009.08-30
+  2009.08-31
+  2009-8-77
+  """
+
+  match_01 = re.findall(r'(?i:\d{4}[\-.,]\d{2}[\-.,]([1-2][0-9]|30|31|0[1-9]))', txt)
+  print(match_01)
+
+#+end_src
+
+#+RESULTS:
+: ['30', '31']
+
+#+begin_src python :results output
+  import re
+  #  match() only finds matches on beginning of line
+  #  search() finds the match anywhere on the line
+  #  (?i:) what follows the colon is case insensitive
+
+  line1 = 'hello world'
+  line2 = 'goodbye world'
+  line3 = 'hi, helLo there'
+  line4 = 'hello, Hello, HELLO, hello there!'
+  line5 = ''
+
+  match_01 = re.match(r'(?i:hello)', line1)
+  print(match_01)
+  match_02 = re.match(r'(?i:hello)', line2)
+  print(match_02)
+  match_03 = re.match(r'(?i:hello)', line3)
+  print(match_03)
+  match_04 = re.match(r'(?i:hello)', line4)
+  print(match_04)
+  match_05 = re.match(r'(?i:hello)', line5)
+  print(match_05)
+  match_06 = re.findall(r'(?i:hello)', line4)
+  print(match_06)
+
+
+#+end_src
+
+#+RESULTS:
+: <re.Match object; span=(0, 5), match='hello'>
+: None
+: None
+: <re.Match object; span=(0, 5), match='hello'>
+: None
+: ['hello', 'Hello', 'HELLO', 'hello']
