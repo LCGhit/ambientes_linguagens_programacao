@@ -52,6 +52,31 @@
   #+RESULTS:
   : 120
 
+#+begin_src cpp :results output
+    #include <iostream>
+    #include <vector>
+    int factorial(int n) {
+      if (n > 1) {
+        return n*factorial(int (n-1));
+      }
+      return n;
+    }
+
+    std::vector <int> factorialArray {3, 4, 5};
+    int main() {
+      for (auto element : factorialArray) {
+          std::cout << "Factorial of " << element << ": "
+                    << factorial(element) << std::endl;
+        }
+      return 0;
+    }
+  #+end_src
+
+#+RESULTS:
+: Factorial of 3: 6
+: Factorial of 4: 24
+: Factorial of 5: 120
+
 * Ex 03 - Pares
 ** a
 - [ ] Escreva uma função 'par' que recebe como argumento um número 'n' e retorna True ou False conforme 'n' seja par ou impar.
