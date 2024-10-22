@@ -353,9 +353,15 @@ Considere a pauta de uma turma, que ao numero de cada aluno associa o seu nome e
 - [ ] Escreva uma função que retorna o nome de um aluno dada a pauta e o número.
   #+begin_src python :results output
     pauta = {'a1':("joana sousa",12), 'a11':("rui cunha",19), 'a13':("ana moura",15)}
+    def returnName(myDict, num):
+        return myDict[num][0]
 
-    ...
+    print(returnName(pauta, 'a11'))
   #+end_src
+
+  #+RESULTS:
+  : rui cunha
+
 ** b
 - [ ] Escreva uma função que retorna a nota de um aluno dada a pauta e o número.
   #+begin_src python :results output
