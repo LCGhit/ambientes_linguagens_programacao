@@ -1,0 +1,64 @@
+* ex_01
+** a
+#+begin_src python :session beautiful_soup_01 :results output
+  import json
+  import re
+
+  from bs4 import BeautifulSoup
+
+  import requests  # for web scraping
+
+
+  def getElements(element, someClass=''):
+      url = ''
+      # response = requests.get(url_car_prices)
+      # soup = BeautifulSoup(response.content, 'html.parser')
+      doc = open(r'../teorico_pratica/web_scrapping/exercicio1.html', encoding='utf-8')
+      soup = BeautifulSoup(doc, 'lxml')
+
+      result = soup.find_all(element, {'class': someClass})
+      return result
+
+  cards = getElements('h5', 'card-title')
+  for card in cards:
+      print(card.text)
+#+end_src
+
+#+RESULTS:
+: Python - Nível iniciado
+: Python - Desenvolvimento Web
+: Python - Ciência de dados
+
+** c
+#+begin_src python :session beautiful_soup_01 :results output
+  print(getElements('h5').find('h5').text)
+#+end_src
+
+#+RESULTS:
+: <class 'bs4.element.ResultSet'>
+
+** f
+#+begin_src python :session beautiful_soup_01 :results output
+  price_tags = getElements('a', 'btn-primary')
+  for i in range(0, len(price_tags)):
+      price_tags[i] = re.sub(r'[a-zA-Z]+', '', price_tags[i].text)
+
+  for i in range(0, len(price_tags)):
+      print(f'Curso: {cards[i].text} Preço: {price_tags[i].text}')
+
+#+end_src
+
+#+RESULTS:
+
+#+begin_src python :session beautiful_soup_01 :results output
+  name_price = getElement('div', 'card-body')
+  for i in range(0, len(name_price)):
+      print(name_price[i].find('h5').text,
+            re.sub(r'([a-zA-Z|\s]+)|([0-9]+)', r'\2', name_price[i].find('a').text))
+
+#+end_src
+
+#+RESULTS:
+: Python - Nível iniciado 20€
+: Python - Desenvolvimento Web 5€
+: Python - Ciência de dados 100$
