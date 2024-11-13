@@ -83,12 +83,9 @@
   myDict = pedido()
 
   with open('mycsvfile.csv', 'w', newline='\n') as f:
-      columns = ['id', 'has records']
-      w = csv.DictWriter(f, myDict.keys())
-      w.writeheader()
-      for key, value in myDict.items():
-          w.writerow({'id': key, 'has records': value})
-
+      w = csv.writer(f)
+      w.writerow({'has_records', 'id'})
+      w.writerows(myDict.items())
 
 #+end_src
 

@@ -62,3 +62,32 @@
 : Python - Nível iniciado 20€
 : Python - Desenvolvimento Web 5€
 : Python - Ciência de dados 100$
+
+* ex_02
+** a, b
+#+begin_src python :session beautiful_soup_01 :results output
+  rows = getElements('a', 'ticker')
+
+  for row in rows:
+      new = re.search(r'([A-Z]+)(\-[A-Z]{3})', row.text).group(1)
+      print(new)
+      # print(new.group(1))
+
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+BTC
+ETH
+USDT
+SOL
+BNB
+USDC
+XRP
+DOGE
+STETH
+WTRX
+TRX
+ADA
+#+end_example
