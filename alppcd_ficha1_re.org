@@ -394,10 +394,14 @@ Define a função `underscores` que substitui todos os espaços numa string por 
   import re
 
   def underscores( frase ):
-
+      result = re.sub(r'(\s+)', '_', frase)
+      return result
 
   print(underscores("Aqui temos   um belo   exemplo   de frase    completamente  maluca  !"))
 #+end_src
+
+#+RESULTS:
+: Aqui_temos_um_belo_exemplo_de_frase_completamente_maluca_!
 
 
 ** Exercício 10
@@ -417,5 +421,12 @@ Define a função `codigos_postais` que recebe uma lista de códigos postais vá
   ]
 
   def codigos_postais( texto ):
-
+      result = []
+      for i in texto:
+          result.append(split(r'\-', i))
+      return result
+  print(codigos_postais(lista))
 #+end_src
+
+#+RESULTS:
+: [['4700', '000'], ['1234', '567'], ['8541', '543'], ['4123', '974'], ['9481', '025']]
