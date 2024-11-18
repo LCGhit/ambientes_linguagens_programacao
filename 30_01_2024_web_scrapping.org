@@ -31,11 +31,10 @@
 
 ** c
 #+begin_src python :session beautiful_soup_01 :results output
-  print(getElements('h5').find('h5').text)
+  new = getElements('h5', 'card-title')
 #+end_src
 
 #+RESULTS:
-: <class 'bs4.element.ResultSet'>
 
 ** f
 #+begin_src python :session beautiful_soup_01 :results output
@@ -51,10 +50,10 @@
 #+RESULTS:
 
 #+begin_src python :session beautiful_soup_01 :results output
-  name_price = getElement('div', 'card-body')
+  name_price = getElements('div', 'card-body')
   for i in range(0, len(name_price)):
       print(name_price[i].find('h5').text,
-            re.sub(r'([a-zA-Z|\s]+)|([0-9]+)', r'\2', name_price[i].find('a').text))
+            re.sub(r'([a-zA-Z|\s]+)([0-9]+)', r'\2', name_price[i].find('a').text))
 
 #+end_src
 
@@ -67,27 +66,14 @@
 ** a, b
 #+begin_src python :session beautiful_soup_01 :results output
   rows = getElements('a', 'ticker')
-
+  result = []
   for row in rows:
       new = re.search(r'([A-Z]+)(\-[A-Z]{3})', row.text).group(1)
       print(new)
-      # print(new.group(1))
-
-
+  #     result.append(new.group(1))
+  # for element in result:
+  #     print(element)
+  # print('arstarst')
 #+end_src
 
 #+RESULTS:
-#+begin_example
-BTC
-ETH
-USDT
-SOL
-BNB
-USDC
-XRP
-DOGE
-STETH
-WTRX
-TRX
-ADA
-#+end_example
