@@ -9,17 +9,17 @@
   import requests  # for web scraping
 
 
-  def getElements(element, someClass=''):
-      url = ''
-      # response = requests.get(url_car_prices)
-      # soup = BeautifulSoup(response.content, 'html.parser')
-      doc = open(r'../teorico_pratica/web_scrapping/exercicio1.html', encoding='utf-8')
-      soup = BeautifulSoup(doc, 'lxml')
-
+  def getElements(element, someClass, url):
+      try:
+          response = requests.get(url)
+          soup = BeautifulSoup(response.content, 'html.parser')
+      except Exception:
+          doc = open(url, encoding='utf-8')
+          soup = BeautifulSoup(doc, 'lxml')
       result = soup.find_all(element, {'class': someClass})
       return result
 
-  cards = getElements('h5', 'card-title')
+  cards = getElements('h5', 'card-title', '../teorico_pratica/web_scrapping/exercicio1.html')
   for card in cards:
       print(card.text)
 #+end_src
@@ -63,7 +63,7 @@
 : Python - Ciência de dados 100$
 
 * ex_02
-** a, b
+** a) b)
 #+begin_src python :session beautiful_soup_01 :results output
   rows = getElements('a', 'ticker')
   result = []
@@ -77,3 +77,88 @@
 #+end_src
 
 #+RESULTS:
+
+*** second resolution
+#+begin_src python :session colab_code :results output
+  import requests
+  from bs4 import BeautifulSoup
+
+
+  def request_data(header, path):  # faz o import dos dados da página web
+      url = f"{header}{path}"
+
+      headers = {'User-Agent':'alpcd-group1'}
+      payload = {}
+      print('here', url)
+      try:
+          response = requests.get(url, headers=headers, data=payload)
+
+          if response.status_code == 200:
+              soup = BeautifulSoup(response.text, "lxml")
+              return soup
+          else:
+              print(f"Erro {response.status_code} - {response.text}")
+              return None
+
+      except requests.exceptions.RequestException as e:
+          print(f"Erro na requisição: {e}")
+          return None
+
+  soup = request_data('https://finance.yahoo.com/', path='crypto')
+#+end_src
+
+#+RESULTS:
+: here https://finance.yahoo.com/crypto
+
+
+** c)
+#+begin_src python :session colab_code :results output
+  from bs4 import BeautifulSoup
+  import re
+  from datetime import datetime
+
+  def request_fun(upper_limit, count):
+      soup = request_data('https://finance.yahoo.com/', path=f'markets/crypto/all/?start={upper_limit-count}&count={count}')
+      linhas = soup.find_all('tr')
+
+      dados = []
+
+      for linha in linhas[1:]:
+          newDict = {}
+          colunas = linha.find_all('td')
+
+          acronimo = colunas[0].text
+          acronimo_limpo = re.sub(r'\s+','',acronimo) #retirar os espaços
+          acronimo2 = re.sub(r'(\s+)([a-z|A-Z|0-9|\-]+)(\s+)', r'\2', acronimo)
+          newDict['acronimo'] = acronimo2
+
+          nome = colunas[1].text
+          nome_limpo = re.sub(r'\s{2,}', '', nome)
+          newDict['nome'] = nome_limpo
+          preco = float(colunas[3].find(attrs={'data-field':'regularMarketPrice'})['data-value'])
+          newDict['preco'] = preco
+          data = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+          newDict['data'] = data
+          dados.append(newDict)
+      return dados
+#+end_src
+
+#+RESULTS:
+
+** d)
+#+begin_src python :session colab_code :results output
+  def recursive_request(upper_limit, lower_limit, count):
+      if upper_limit-count > lower_limit:
+          return recursive_request(upper_limit-count, lower_limit, count)+request_fun(upper_limit, count)
+      else:
+          return request_fun(upper_limit, upper_limit-lower_limit)
+
+  print(len(recursive_request(9999, 9700, 100)))
+
+#+end_src
+
+#+RESULTS:
+: here https://finance.yahoo.com/markets/crypto/all/?start=9700&count=99
+: here https://finance.yahoo.com/markets/crypto/all/?start=9799&count=100
+: here https://finance.yahoo.com/markets/crypto/all/?start=9899&count=100
+: 299
