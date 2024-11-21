@@ -345,7 +345,6 @@ Feedback
 #+RESULTS:
 : here https://finance.yahoo.com/crypto
 
-
 ** c)
 #+begin_src python :session colab_code :results output
   from bs4 import BeautifulSoup
@@ -388,9 +387,9 @@ Feedback
       else:
           return request_fun(upper_limit, upper_limit-lower_limit)
 
-  upper_limit = get_elements('div', 'total', 'https://finance.yahoo.com/markets/crypto/all')
-  upper_limit = int(re.search(r'([a-zA-Z]+\s([0-9]+))', result[0].text).group(2))
-  print(len(recursive_request(upper_limit, upper_limit-250, 100)))
+  entries_total = get_elements('div', 'total', 'https://finance.yahoo.com/markets/crypto/all')
+  entries_total = int(re.search(r'([a-zA-Z]+\s([0-9]+))', result[0].text).group(2))
+  print(len(recursive_request(entries_total, entries_total-250, 100)))
 
 #+end_src
 

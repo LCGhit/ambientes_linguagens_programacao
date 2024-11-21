@@ -33,7 +33,7 @@ printStars()
 #+end_src
 
 * 04
-#+begin_src python
+#+begin_src python :results output
   def addSubMult():
       flag = 'y'
       while(flag == 'y'):
@@ -54,6 +54,9 @@ printStars()
 
   addSubMult()
 #+end_src
+
+#+RESULTS:
+: Input a number:
 
 * 05
 #+begin_src python :results output
