@@ -1,6 +1,6 @@
 * ex_01
 ** a
-#+begin_src python :session beautiful_soup_01 :results output
+#+begin_src python :session beautiful_soup_01 :session colab_code :results output
   import json
   import re
 
@@ -9,17 +9,18 @@
   import requests  # for web scraping
 
 
-  def getElements(element, someClass, url):
+  def get_elements(element, someClass, url):
       try:
-          response = requests.get(url)
-          soup = BeautifulSoup(response.content, 'html.parser')
+          headers = {'User-Agent':'alpcd-group1'}
+          response = requests.get(url, headers=headers)
+          soup = BeautifulSoup(response.text, 'lxml')
       except Exception:
           doc = open(url, encoding='utf-8')
           soup = BeautifulSoup(doc, 'lxml')
       result = soup.find_all(element, {'class': someClass})
       return result
 
-  cards = getElements('h5', 'card-title', '../teorico_pratica/web_scrapping/exercicio1.html')
+  cards = get_elements('h5', 'card-title', '../teorico_pratica/web_scrapping/exercicio1.html')
   for card in cards:
       print(card.text)
 #+end_src
@@ -31,14 +32,248 @@
 
 ** c
 #+begin_src python :session beautiful_soup_01 :results output
-  new = getElements('h5', 'card-title')
+  new = get_elements('div', '', 'https://finance.yahoo.com/')
+  for element in new:
+      print(element.text)
 #+end_src
 
 #+RESULTS:
+#+begin_example
+              News  Today's news   US   Politics   World   Tech  Reviews and deals  Audio  Computing  Gaming  Health  Home  Phones  Science  TVs     Climate change   Health   Science   2024 election   Originals  The 360     Newsletters    Life  Health  COVID-19  Fall allergies  Health news  Mental health  Relax  Sexual health  Studies  The Unwind     Parenting  Family health  So mini ways     Style and beauty  It Figures  Unapologetically     Horoscopes   Shopping  Buying guides     Food   Travel   Autos   Gift ideas   Buying guides    Entertainment  Celebrity   TV   Movies   Music   How to Watch   Interviews   Videos     Finance  My Portfolio   News  Latest News  Stock Market  Originals  The Morning Brief  Economics  Housing  Earnings  Tech  Crypto  Biden Economy     Markets  Stocks: Most Actives  Stocks: Gainers  Stocks: Losers  Trending Tickers  Futures  World Indices  US Treasury Bonds Rates  Currencies  Crypto  Top ETFs  Top Mutual Funds  Options: Highest Open Interest  Options: Highest Implied Volatility  Sectors  Basic Materials  Communication Services  Consumer Cyclical  Consumer Defensive  Energy  Financial Services  Healthcare  Industrials  Real Estate  Technology  Utilities     Research  Screeners  Screeners Beta  Watchlists  Calendar  Stock Comparison  Advanced Chart  Currency Converter     Personal Finance  Credit Cards  Balance Transfer Cards  Cash-back Cards  Rewards Cards  Travel Cards  Credit Card Offers  Banking  CD Rates  Best HYSA  Best Free Checking  Student Loans  Personal Loans  Insurance  Car insurance  Mortgages  Mortgage Refinancing  Mortgage Calculator  Taxes     Videos  Latest News  Editor's Picks  Investing Insights  Trending Stocks  All Shows  Morning Brief  Opening Bid  Wealth  Invest  ETF Report      Sports  Fantasy  News  Fantasy football  Best Ball  Pro Pick 'Em  College Pick 'Em  Fantasy baseball  Fantasy hockey  Fantasy basketball  Download the app     Daily fantasy   NFL  News  Scores and schedules  Standings  Stats  Teams  Players  Drafts  Injuries  Odds  Super Bowl  GameChannel  Videos     MLB  News  Scores and schedules  Standings  Stats  Teams  Players  Odds  Videos  World Baseball Classic     NBA  News  Draft  Scores and schedules  Standings  Stats  Teams  Players  Injuries  Videos  Odds  Playoffs     NHL  News  Scores and schedules  Standings  Stats  Teams  Players  Odds  Playoffs     Soccer  News  Scores and schedules  Premier League  MLS  NWSL  Liga MX  CONCACAF League  Champions League  La Liga  Serie A  Bundesliga  Ligue 1  World Cup     College football  News  Scores and schedules  Standings  Rankings  Stats  Teams     Show all  MMA  WNBA  Sportsbook  NCAAF  Tennis  Golf  NASCAR  NCAAB  NCAAW  Boxing  USFL  Cycling  Motorsports  Olympics  Horse racing  GameChannel  Rivals  Newsletters  Podcasts  Videos  RSS  Jobs  Help  World Cup  More news     New on Yahoo Creators Games Tech    Terms  Privacy  Privacy & Cookie Settings   Feedback   © 2024  All rights reserved.  About our ads  Advertising  Careers    Yahoo Finance                                    Yahoo Finance    Search query                  Select edition  USEnglish   US y LATAMEspañol  AustraliaEnglish  CanadaEnglish  CanadaFrançais  DeutschlandDeutsch  FranceFrançais  香港繁中  MalaysiaEnglish  New ZealandEnglish  SingaporeEnglish  台灣繁中  UKEnglish     News   Finance   Sports   More News Today's news  US  Politics  World  Weather  Climate change  Health  Science  2024 election  Originals  Newsletters   Life Health  Parenting  Style and beauty  Horoscopes  Shopping  Food  Travel  Autos  Gift ideas  Buying guides   Entertainment Celebrity  TV  Movies  Music  How to watch  Interviews  Videos   Finance My portfolio  Watchlists  Markets  News  Videos  Screeners  Personal finance  Crypto  Industries   Sports Fantasy  NFL  NBA  MLB  NHL  College football  College basketball  Soccer  MMA  Yahoo Sports AM    New on Yahoo Creators Games Tech    Selected edition   USEnglish            Mail       Sign in       My Portfolio    News    Latest News Stock Market Originals The Morning Brief Economics Housing Earnings Tech Crypto Biden Economy    Markets    Stocks: Most Actives Stocks: Gainers Stocks: Losers Trending Tickers Futures World Indices US Treasury Bonds Rates Currencies Crypto Top ETFs Top Mutual Funds Options: Highest Open Interest Options: Highest Implied Volatility Sectors Basic Materials Communication Services Consumer Cyclical Consumer Defensive Energy Financial Services Healthcare Industrials Real Estate Technology Utilities    Research    Screeners Screeners Beta Watchlists Calendar Stock Comparison Advanced Chart Currency Converter    Personal Finance    Credit Cards Balance Transfer Cards Cash-back Cards Rewards Cards Travel Cards Credit Card Offers Banking CD Rates Best HYSA Best Free Checking Student Loans Personal Loans Insurance Car insurance Mortgages Mortgage Refinancing Mortgage Calculator Taxes    Videos    Latest News Editor's Picks Investing Insights Trending Stocks All Shows Morning Brief Opening Bid Wealth Invest ETF Report    …            S&P 500 5,917.11  +0.00%     Dow 30 43,408.47  +0.32%     Nasdaq 18,966.14  -0.11%     Russell 2000 2,325.53  +0.03%     Crude Oil 68.95  +0.12%     Gold 2,652.70  +0.04%     Silver 30.97  -0.13%     EUR/USD 1.0547  -0.49%     10-Yr Bond 4.4060  +0.62%     GBP/USD 1.2653  -0.21%     USD/JPY 155.2610  +0.47%     Bitcoin USD 94,171.45  +2.00%     XRP USD 1.11  +0.63%     FTSE 100 8,085.07  -0.17%     Nikkei 225 38,352.34  -0.16%     $NVDA EARNINGS Earnings, forecasts top estimates as 'age of AI is in full steam'       Nvidia beats on earnings as 'age of AI is in full steam' Nvidia's earnings topped estimates, but its less lofty forecast failed to impress. Shares tipped lower.  Yahoo Finance • 2 hours ago   NVDA           Dow, S&P 500 eke out gains ahead of Nvidia results   Yahoo Finance • 1 hour ago   ^DJI      NVDA           Radical Jaguar rebrand and new logo spark ire online   Associated Press Finance • 5 hours ago   ^YH102             How Nvidia became Wall Street's most valuable company   Associated Press Finance • 20 minutes ago   NVDA      ^GSPC         Palo Alto tops revenue and profit estimates   Reuters • 2 minutes ago   PANW         Like his boss, Fed's Barr says he won't leave if Trump tries to fire him   Yahoo Finance • 4 hours ago     Stanley Black & Decker CEO on potential tariffs: Prices will go up   Yahoo Finance • 45 minutes ago   TGT      WMT         Why did Musk ask people to upload their medical data to X?   Fortune • 1 hour ago     Snowflake raises revenue forecast, announces AI deal with Anthropic   Reuters • 1 hour ago     Target plunges after big earnings miss, guidance slash   Yahoo Finance • 8 hours ago   TGT      WMT         View More    Latest   Asian Stocks to Slip as Nvidia Fails to Impress: Markets Wrap   Bloomberg • 21 minutes ago   NVDA         Palo Alto tops revenue and profit estimates on steady cybersecurity demand   Reuters • 26 minutes ago   PANW         Snowflake Shares Jump on Strong Product Sales Growth Outlook   Bloomberg • 32 minutes ago   SNOW         Nvidia is Wall Street's most valuable company. How it got there, by the numbers   Associated Press Finance • 55 minutes ago   NVDA      ^GSPC         Werner nuclear verdict case in Texas is hugely significant, says attorney at F3   FreightWaves • 1 hour ago   WERN      WNC         Lower turkey costs set table for cheaper US Thanksgiving feast this year   Reuters • 1 hour ago     Nvidia beats earnings expectations as investors eye demand for Blackwell AI chips   Associated Press Finance • 1 hour ago   NVDA         Nvidia Forecast Fails to Meet Loftiest Estimates for AI Star   Bloomberg • 1 hour ago   NVDA         Popular    Suze Orman Warns $3 Million Isn't Enough For Retirement, Even At A Mere 3% Withdrawal Rate – She Says You Need $10 Million Or More   Benzinga • yesterday     Dave Ramsey Recalls The Day American Express Called His Wife, Asking Why Stay 'With A Man That Won't Pay His Bills.' Here's What He Did Next   Benzinga • 2 days ago   AXP         "We Will Pass Those Tariff Costs Back To The Consumer," Says CEO Of AutoZone. Here's A Look At Other Companies Raising Prices   Benzinga • 3 days ago   AZO         SpaceX To Launch Tender Offer, Valuing Company At Over $250 Billion: Report   Benzinga • 4 days ago     Arizona girl, 10, sells prize chicks for $2,100 — but then Chase froze her check, closed the account. Here’s why   Moneywise • 3 days ago     The Stock Market Is Doing Something Witnessed Only 3 Times in 153 Years -- and History Is Very Clear What Happens Next   Motley Fool • 3 days ago   ^GSPC      COMP         Are You On Track To Retire Rich? Here's The Nest Egg You Need To Be Considered a Wealthy Retiree   Benzinga • 8 days ago        Investment Ideas        Top Daily Gainers   Discover equities with the greatest gains during the trading day   Company Last Price Avg. Rating    WSM  Williams-Sonoma, Inc.  175.04  + 27.54%   Hold      SGPYY  The Sage Group plc  64.70  + 17.55%         LMND  Lemonade, Inc.  46.58  + 16.04%   Underperform      DLB  Dolby Laboratories, Inc.  81.98  + 15.61%         YMM  Full Truck Alliance Co. Ltd.  9.84  + 14.82%        View More    Top Daily Losers   See equities with the greatest losses during the trading day   Company Last Price Avg. Rating    TGT  Target Corporation  121.72   -21.41%   Buy      POWL  Powell Industries, Inc.  261.82   -16.12%         DY  Dycom Industries, Inc.  176.56   -12.93%   Strong Buy      FMCCM  Federal Home Loan Mortgage Corporation  15.00   -11.56%         BRPHF  Galaxy Digital Holdings Ltd.  17.31   -10.77%        View More      StockStory Top Picks  View our Top Picks for the week.
+        Learn More.     Company Avg. Rating   Learn More     Most Active Stocks   Look at equities with the highest trading volume during the trading day   Company Last Price Avg. Rating    NVDA  NVIDIA Corporation  145.89   -0.76%   Strong Buy      MARA  MARA Holdings, Inc.  22.63  + 13.95%   Buy      SMCI  Super Micro Computer, Inc.  25.80   -8.74%   Hold      NIO  NIO Inc.  4.6500  + 0.43%   Buy      GRAB  Grab Holdings Limited  5.66  + 3.66%   Strong Buy     View More    Top ETFs   These are top-performing ETFs in the US by asset value and Morningstar Ratings   Company Last Price Net Assets    IHF  iShares U.S. Healthcare Providers ETF  53.01  + 1.81%   704.493M     XMHQ  Invesco S&P MidCap Quality ETF  103.85  + 1.56%   5.691B     ESPO  VanEck Video Gaming and eSports ETF  82.33  + 1.44%   257.02M     PXE  Invesco Dynamic Energy Exploration & Production ETF  32.03  + 1.40%   106.646M     IEO  iShares U.S. Oil & Gas Exploration & Production ETF  100.36  + 1.29%   589.209M    View More    Undervalued Growth Stocks   These highly undervalued equities have strong earnings growth   Company Last Price Avg. Rating    GM  General Motors Company  54.87   -0.44%   Buy      ET  Energy Transfer LP  18.28  + 1.78%   Strong Buy      APA  APA Corporation  22.13  + 0.96%   Hold      KGC  Kinross Gold Corporation  9.97   -0.30%   Buy      LAUR  Laureate Education, Inc.  18.88  + 0.59%        View More          Build Your Wealth View More    Editor's Pick   Editor's Pick How to invest in gold in 4 steps Learn how to invest in gold by considering historic behavior and the pros and cons of the metal vs. gold mining stocks and ETFs.   Smart Money Moves     How to insure deposits beyond FDIC's $250,000 coverage limit       How does Nvidia make money?       Money moves to make before the end of the year       Realtor fee rules have changed. Here's what to know.       Yes, you can refinance a HELOC — here's how      More Ways to Save     Get a $200 Amazon gift card with your new Prime Visa card       How to save on trip costs during the holidays with credit cards       Here are the best credit cards for Thanksgiving groceries        9 ways to save money and avoid debt this Black Friday       6 holiday savings tips to keep your budget in check       View More    Best travel credit cardCompare high-yield savings accountsBest CD ratesMortgage calculatorHow much house can I afford?     Snapshots     Markets prepare for Nvidia's high-stakes earning report  Here's how shares of Nvidia have reacted to previous reports.    Nvidia to report earnings as AI fever continues Nvidia's earnings could offer insight into the strength of the AI industry.      NVDA         Can Nvidia sustain its growth momentum? Analysts and investors are balancing high expectations with concerns about potential growth limitations.     NVDA         Why Nvidia earnings could be sink-or-swim for the bull market The market rally has been broadening away from Big Tech and Nvidia, its leader.      SOXX      QCOM         More News      Suze Orman Warns $3 Million Isn't Enough For Retirement, Even At A Mere 3% Withdrawal Rate – She Says You Need $10 Million Or More Think $3 million is a solid retirement fund? Suze Orman has a reality check for you. Speaking on the "Afford Anything" podcast, she explained why even this seemingly hefty amount might leave you struggling in retirement – especially if life throws a few curveballs your way. Don't Miss: The number of ‘401(k)' Millionaires is up 43% from last year — Here are three ways to join the club. Many are using this retirement income calculator to check if they’re on pace — here’s a breakdown on how on what   Benzinga • yesterday      Dave Ramsey Recalls The Day American Express Called His Wife, Asking Why Stay 'With A Man That Won't Pay His Bills.' Here's What He Did Next Dave Ramsey is known today as a straight-talking personal finance expert. But before becoming a household name, Ramsey went through a financial crisis that turned his life upside down. It all started when he realized how deep in debt he was – and when American Express called his wife, questioning her choice to stay with a man who couldn't pay his bills. That moment sparked a transformation that changed Dave’s life and led him to help millions of others regain control of their finances. The thing   Benzinga • 2 days ago   AXP           "We Will Pass Those Tariff Costs Back To The Consumer," Says CEO Of AutoZone. Here's A Look At Other Companies Raising Prices President-elect Donald Trump’s proposed tariffs have already begun to upend businesses in several industries and many are taking action to safeguard their profits. The tariffs, which include a 10-20% tax on all imports and a potential 60-100% on goods from China, are causing significant concern – and the costs are likely coming right to consumers' wallets. Don't Miss: This Adobe-backed AI marketing startup went from a $5 to $85 million valuation working with brands like L'Oréal, Hasbro and Sweet   Benzinga • 3 days ago   AZO          SpaceX To Launch Tender Offer, Valuing Company At Over $250 Billion: Report SpaceX, under the leadership of Elon Musk, is reportedly preparing to initiate a tender offer next month. What Happened: SpaceX's tender offer will allow the sale of existing shares at $135 each, valuing the company at over $250 billion, as reported ...   Benzinga • 4 days ago      Arizona girl, 10, sells prize chicks for $2,100 — but then Chase froze her check, closed the account. Here’s why The family is calling fowl.   Moneywise • 3 days ago      The Stock Market Is Doing Something Witnessed Only 3 Times in 153 Years -- and History Is Very Clear What Happens Next When things seem too good to be true on Wall Street, they usually are.   Motley Fool • 3 days ago   ^GSPC      COMP          Are You On Track To Retire Rich? Here's The Nest Egg You Need To Be Considered a Wealthy Retiree Retirement planning feels like solving a puzzle with half the pieces hidden. You know you're supposed to save, but how much is enough to secure a comfortable – or even wealthy – retirement? Here's what you need to know to set yourself on the right path. Don't Miss: The average American couple has saved this much money for retirement – How do you compare? Many are using this retirement income calculator to check if they’re on pace – here’s a breakdown on how on what’s behind this formula. $100K S   Benzinga • 8 days ago      New welcome offer: Earn a $400 statement credit and 40,000 points with Southwest credit cards just in time for the holidays Southwest credit cards have new welcome offers with elevated rewards — just in time for the holidays and kickstarting your 2025 travel plans.   Yahoo Personal Finance • 8 days ago       Stanley Black & Decker CEO on potential Trump tariffs: Tool prices will go up Stanley Black & Decker CEO Don Allan says any new tariffs by the Trump administration would not be good for his business.   Yahoo Finance • 45 minutes ago   TGT      WMT          Stock market today: Dow, S&P 500 eke out gains ahead of Nvidia earnings Nvidia's results are seen as a reality check on just how important the AI chipmaker is to the rally in stocks.   Yahoo Finance • 2 hours ago   ^DJI      NVDA          Nvidia earnings, forecasts top expectations as 'age of AI is in full steam' Nvidia reported its Q3 earnings after the bell on Wednesday.   Yahoo Finance • 2 hours ago   NVDA             How long should you save your bank statements? How long do you save bank statements and other important documents? Here are some expert-recommended guidelines you can follow.   Yahoo Personal Finance • 2 hours ago      Interest-only HELOC: How payments are calculated An interest-only HELOC only requires you to pay interest during the draw period. Learn how an interest-only HELOC works and whether it’s the right fit for you.   Yahoo Personal Finance • 2 hours ago      Comcast announces plan to spin off TV networks including MSNBC, CNBC to play 'offense' in new media landscape Comcast stock jumped as investors reacted to news that the company will spin off its cable TV networks.   Yahoo Finance • 8 hours ago   CMCSA           Fed's Michael Barr, like his boss Jay Powell, won’t leave if Trump tries to fire him The Federal Reserve’s top banking regulator said Wednesday he wouldn’t leave before his term was up even if President-elect Donald Trump tried to remove him.   Yahoo Finance • 4 hours ago      Do 7% interest savings accounts exist anymore? As the Fed continues to cut rates, you might wonder if it’s possible to earn 7% interest on a savings account. Here’s where to find 7% interest accounts — plus, how to maximize your interest earnings.   Yahoo Personal Finance • 4 hours ago      Delta Air Lines predicts premium passenger revenue will overtake main cabin by 2027 Delta cemented its focus on premium revenue growth at its investor day.   Yahoo Finance • 4 hours ago   UAL      JBLU          Qualcomm stock falls after new autos, PC targets fail to wow investors Qualcomm stock fell a day after it provided new five-year targets for its non-smartphones businesses. Some analysts question the pace of growth in areas like PCs.   Yahoo Finance • 5 hours ago   AAPL      QCOM          How to invest in gold in 4 steps Learn how to invest in gold by considering gold's strengths, historic behavior, and the pros and cons of physical gold versus gold mining stocks and ETFs.   Yahoo Personal Finance • 5 hours ago      Owning a home has rarely been this much more expensive than renting The premium for homeownership has grown in recent years as home insurance, upkeep, and high mortgage rates skew the buying vs. renting math.   Yahoo Finance • 7 hours ago       Chase mortgage review 2024 Whether you're an existing customer or not, Chase is worth putting into your mix of potential mortgage lenders to consider. Learn whether Chase is a good fit.   Yahoo Personal Finance • 8 months ago      Mortgage interest tax deduction: How it works and when it makes sense If you're going to itemize your deductions, the mortgage interest deduction could be a nice tax-saving opportunity. Learn how the interest deduction works.   Yahoo Personal Finance • 8 months ago      Target CEO 'guiding for some conservatism' as the retailer misses earnings estimates ahead of the holidays Target unsettled investors ahead of the crucial holiday shopping season.   Yahoo Finance • 12 hours ago   TGT      WMT             Money market account rates today, November 20, 2024 (up to 5.01% APY) Looking for the best money market account interest rates available today? Here’s a look at where to find the highest rates and whether now is a good time to open a money market account.   Yahoo Personal Finance • 12 hours ago      Why Nvidia earnings could be a sink-or-swim moment for this bull market The market rally has been broadening away from Big Tech and Nvidia, its leader. But at the same time, the chip company is still critical to the health of the bull market.   Yahoo Finance • 12 hours ago   SOXX      QCOM          CD rates today, November 20, 2024 (up to 4.27% APY) Looking for the best CD rates available today? Here’s a look at where to find the highest rates and whether now is a good time to invest in a CD.   Yahoo Personal Finance • 12 hours ago       Mortgage and refinance rates today, November 20, 2024: 30-year fixed rate falls These are today's mortgage and refinance rates. Although rates are unsteady, they have decreased on some of the most popular terms. Lock in your rate today.   Yahoo Personal Finance • 12 hours ago      Savings interest rates today, November 20, 2024 (top rate at 4.75% APY) Savings interest rates available today are well above historical norms. Find out where to get the best savings account rates.   Yahoo Personal Finance • 12 hours ago      'We're concerned': Walmart, Lowe's among latest companies to warn Trump tariffs could raise product costs Walmart and Lowe’s were the latest to raise concerns about President-elect Donald Trump’s proposed tariffs.   Yahoo Finance • 14 hours ago   LOW      UA          DOJ may be ready to break up Google. It needs to convince a judge first. US prosecutors are expected to submit a document Wednesday that could ask for Google's Alphabet parent company to sell off its Chrome browser, among other remedies. Whether that actually happens won't be decided until 2025.   Yahoo Finance • 14 hours ago   MSFT      AMZN          What is the Certificate of Deposit Account Registry Service (CDARS), and how does it work? If you have more than $250,000 in bank deposits to insure, you may want to go through CDARS. Learn more about how this service works.   Yahoo Personal Finance • yesterday      Bitcoin clears another record: Is this a good time to invest? Bitcoin continues to shatter records in 2024 and is up over 30% since the election. Here's what to know about investing in bitcoin right now.   Yahoo Personal Finance • 8 months ago       Where to cash a check if you don't have a bank account Where can you cash a check without a bank account? You have a few options, though some come with higher fees than others. Learn more.   Yahoo Personal Finance • yesterday      Super Micro stock surges after company files plan to avoid Nasdaq delisting Super Micro Computer met a deadline Monday to avoid delisting from the Nasdaq after delaying prior financial statements.   Yahoo Finance • yesterday   SMCI      NVDA          Nvidia stock rises on AI spending, chip deal ahead of earnings Nvidia stock rose as much as 4% on Tuesday following a series of bullish notes from Wall Street analysts ahead of its earnings report.   Yahoo Finance • yesterday   NVDA      DELL             Yes, you can refinance a HELOC — here's how Refinancing a home equity line of credit is possible, and the best time to do so is before the draw period ends. Here are your options for refinancing a HELOC.   Yahoo Personal Finance • yesterday      Trump could be the next Biden There's a new pattern in US presidential elections: Voters frustrated with worsening wealth inequality repeatedly punish the incumbent.   Yahoo Finance • yesterday      Stock market today: Nasdaq jumps as Nvidia surges before earnings, Wall Street shrugs off Russia-Ukraine tensions Worries about a nuclear escalation to the Russia-Ukraine war rattled markets, stealing focus from Nvidia and Walmart earnings.   Yahoo Finance • yesterday   ^DJI      ^GSPC           Why are home prices so high? Buying a home can feel financially out of reach. Learn why house prices are so high and how today’s costs compare to historical housing prices.   Yahoo Personal Finance • 7 months ago      Markets look to Howard Lutnick, other Trump economic picks for signals on tariffs Donald Trump has been somewhat cagey about his economic plans — especially tariffs — since voters elected him president. That is raising the stakes in a drawn-out contest to become his treasury secretary while focusing Wall Street's attention on other key posts.   Yahoo Finance • yesterday      Bitcoin hits record high above $93,800 as Trump rally resumes Bitcoin touched new highs today as a key component of the "Trump trade" resumed its climb.   Yahoo Finance • yesterday   DJT      DJTWW          Best limited-time credit card offers for November 2024: $200 from Amazon, boosted welcome bonuses, and more Check out the best limited-time credit card offers and bonuses available right now.   Yahoo Personal Finance • 2 months ago      Stellantis reveals 'multi-energy' EV truck platform that's 'well-positioned' for the market, CEO says Stellantis revealed new details for its upcoming truck EV platform as the Big Three automaker attempts to revamp its flagging business.   Yahoo Finance • yesterday   GM      STLA          How to choose the best savings options to cover the cost of college Ross Riskin, a personal finance expert, breaks down some smart strategies to fund your child's education, as well as the importance of FAFSA and potential education savings changes to consider under the incoming Trump administration.   Yahoo Finance • yesterday       What if you can't afford closing costs? 6 ways you can still buy a home. If you can’t afford closing costs, you can waive or avoid up-front expenses so you can still buy a home. Decide which strategies are best for you.   Yahoo Personal Finance • yesterday      Gold jumps to 1-week high as Russia-Ukraine war escalates Gold hovered at its highest level in a week as the Russia-Ukraine war took a new turn.   Yahoo Finance • yesterday   ^GSPC      GC=F          Walmart raises guidance after another strong earnings report ahead of the holiday season Value-seeking shoppers continue to provide a boost to Walmart.   Yahoo Finance • yesterday   AMZN      TGT             Lowe's beats its quarterly estimates, but negative sales outlook draws focus 2025 could be a better year for the home improvement sector.   Yahoo Finance • yesterday   LOW      ^GSPC          Goldman Sachs sees S&P 500 hitting 6,500 in 2025 amid 'narrowing' Big Tech outperformance Goldman Sachs sees the S&P 500 gaining 11% over the next year as stock market gains continue to broaden out from a few large tech names.   Yahoo Finance • yesterday   AMZN      TSLA          Microsoft debuts new Copilot software, touts AI growth at Ignite Conference Microsoft announced a number of new AI features for its enterprise products during its Ignite conference in Chicago on Tuesday.   Yahoo Finance • yesterday   NVDA      GOOG                   Copyright © 2024 Yahoo. All rights reserved.     POPULAR QUOTES Dow Jones   S&P 500   DAX Index   Nvidia   Tesla   DJT    EXPLORE MORE Mortgages   Credit Cards   Sectors   Crypto Heatmap   Biden Economy   Financial News    ABOUT Data Disclaimer   Help   Feedback   Sitemap   Licensing    What's New   About Our Ads    Terms   and Privacy Policy    Privacy & Cookie Settings                  U.S. markets closed     US    Europe    Asia    Rates    Commodities    Currencies    Cryptocurrencies     S&P 500   5,917.11 +0.13 (+0.00%)           Dow 30   43,408.47 +139.53 (+0.32%)           Nasdaq   18,966.14 -21.33 (-0.11%)           Russell 2000   2,325.53 +0.71 (+0.03%)           Crude Oil   68.95 +0.08 (+0.12%)           Gold   2,652.70 +1.00 (+0.04%)                     My Portfolios   My Portfolios   Sign in to access your portfolio Sign in       Top Gainers     WSM Williams-Sonoma, Inc. 175.04 +37.80 (+27.54%)            SGPYY The Sage Group plc 64.70 +9.66 (+17.55%)            LMND Lemonade, Inc. 46.58 +6.44 (+16.04%)            DLB Dolby Laboratories, Inc. 81.98 +11.07 (+15.61%)            YMM Full Truck Alliance Co. Ltd. 9.84 +1.27 (+14.82%)               Top Losers     TGT Target Corporation 121.72 -33.16 (-21.41%)            POWL Powell Industries, Inc. 261.82 -50.32 (-16.12%)            DY Dycom Industries, Inc. 176.56 -26.23 (-12.93%)            FMCCM Federal Home Loan Mortgage Corporation 15.00 -1.96 (-11.56%)            BRPHF Galaxy Digital Holdings Ltd. 17.31 -2.09 (-10.77%)               Most Active     NVDA NVIDIA Corporation 145.89 -1.12 (-0.76%)            MARA MARA Holdings, Inc. 22.63 +2.77 (+13.95%)            SMCI Super Micro Computer, Inc. 25.80 -2.47 (-8.74%)            NIO NIO Inc. 4.6500 +0.0200 (+0.43%)            GRAB Grab Holdings Limited 5.66 +0.20 (+3.66%)               Trending Tickers     NVDA NVIDIA Corporation 145.89 -1.12 (-0.76%)            SNOW Snowflake Inc. 129.12 -1.12 (-0.86%)            PANW Palo Alto Networks, Inc. 392.89 +4.83 (+1.24%)            TGT Target Corporation 121.72 -33.16 (-21.41%)            WSM Williams-Sonoma, Inc. 175.04 +37.80 (+27.54%)               Top Economic Events   Top Economic Events    Portugal      There are no important events for this country at this time.  Select "All" to see top events in other countries or view all events. View All Events         Terms   and Privacy Policy    Privacy & Cookie Settings   Ad Terms   Feedback
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   Mail
+
+
+ S&P 500 5,917.11  +0.00%
+ Dow 30 43,408.47  +0.32%
+ Nasdaq 18,966.14  -0.11%
+ Russell 2000 2,325.53  +0.03%
+ Crude Oil 68.95  +0.12%
+ Gold 2,652.70  +0.04%
+ Silver 30.97  -0.13%
+ EUR/USD 1.0547  -0.49%
+ 10-Yr Bond 4.4060  +0.62%
+ GBP/USD 1.2653  -0.21%
+ USD/JPY 155.2610  +0.47%
+ Bitcoin USD 94,171.45  +2.00%
+ XRP USD 1.11  +0.63%
+ FTSE 100 8,085.07  -0.17%
+ Nikkei 225 38,352.34  -0.16%
+
+
+
+ Investment Ideas        Top Daily Gainers   Discover equities with the greatest gains during the trading day   Company Last Price Avg. Rating    WSM  Williams-Sonoma, Inc.  175.04  + 27.54%   Hold      SGPYY  The Sage Group plc  64.70  + 17.55%         LMND  Lemonade, Inc.  46.58  + 16.04%   Underperform      DLB  Dolby Laboratories, Inc.  81.98  + 15.61%         YMM  Full Truck Alliance Co. Ltd.  9.84  + 14.82%        View More    Top Daily Losers   See equities with the greatest losses during the trading day   Company Last Price Avg. Rating    TGT  Target Corporation  121.72   -21.41%   Buy      POWL  Powell Industries, Inc.  261.82   -16.12%         DY  Dycom Industries, Inc.  176.56   -12.93%   Strong Buy      FMCCM  Federal Home Loan Mortgage Corporation  15.00   -11.56%         BRPHF  Galaxy Digital Holdings Ltd.  17.31   -10.77%        View More      StockStory Top Picks  View our Top Picks for the week.
+        Learn More.     Company Avg. Rating   Learn More     Most Active Stocks   Look at equities with the highest trading volume during the trading day   Company Last Price Avg. Rating    NVDA  NVIDIA Corporation  145.89   -0.76%   Strong Buy      MARA  MARA Holdings, Inc.  22.63  + 13.95%   Buy      SMCI  Super Micro Computer, Inc.  25.80   -8.74%   Hold      NIO  NIO Inc.  4.6500  + 0.43%   Buy      GRAB  Grab Holdings Limited  5.66  + 3.66%   Strong Buy     View More    Top ETFs   These are top-performing ETFs in the US by asset value and Morningstar Ratings   Company Last Price Net Assets    IHF  iShares U.S. Healthcare Providers ETF  53.01  + 1.81%   704.493M     XMHQ  Invesco S&P MidCap Quality ETF  103.85  + 1.56%   5.691B     ESPO  VanEck Video Gaming and eSports ETF  82.33  + 1.44%   257.02M     PXE  Invesco Dynamic Energy Exploration & Production ETF  32.03  + 1.40%   106.646M     IEO  iShares U.S. Oil & Gas Exploration & Production ETF  100.36  + 1.29%   589.209M    View More    Undervalued Growth Stocks   These highly undervalued equities have strong earnings growth   Company Last Price Avg. Rating    GM  General Motors Company  54.87   -0.44%   Buy      ET  Energy Transfer LP  18.28  + 1.78%   Strong Buy      APA  APA Corporation  22.13  + 0.96%   Hold      KGC  Kinross Gold Corporation  9.97   -0.30%   Buy      LAUR  Laureate Education, Inc.  18.88  + 0.59%        View More
+
+ Top Daily Gainers   Discover equities with the greatest gains during the trading day   Company Last Price Avg. Rating    WSM  Williams-Sonoma, Inc.  175.04  + 27.54%   Hold      SGPYY  The Sage Group plc  64.70  + 17.55%         LMND  Lemonade, Inc.  46.58  + 16.04%   Underperform      DLB  Dolby Laboratories, Inc.  81.98  + 15.61%         YMM  Full Truck Alliance Co. Ltd.  9.84  + 14.82%        View More    Top Daily Losers   See equities with the greatest losses during the trading day   Company Last Price Avg. Rating    TGT  Target Corporation  121.72   -21.41%   Buy      POWL  Powell Industries, Inc.  261.82   -16.12%         DY  Dycom Industries, Inc.  176.56   -12.93%   Strong Buy      FMCCM  Federal Home Loan Mortgage Corporation  15.00   -11.56%         BRPHF  Galaxy Digital Holdings Ltd.  17.31   -10.77%        View More      StockStory Top Picks  View our Top Picks for the week.
+        Learn More.     Company Avg. Rating   Learn More     Most Active Stocks   Look at equities with the highest trading volume during the trading day   Company Last Price Avg. Rating    NVDA  NVIDIA Corporation  145.89   -0.76%   Strong Buy      MARA  MARA Holdings, Inc.  22.63  + 13.95%   Buy      SMCI  Super Micro Computer, Inc.  25.80   -8.74%   Hold      NIO  NIO Inc.  4.6500  + 0.43%   Buy      GRAB  Grab Holdings Limited  5.66  + 3.66%   Strong Buy     View More    Top ETFs   These are top-performing ETFs in the US by asset value and Morningstar Ratings   Company Last Price Net Assets    IHF  iShares U.S. Healthcare Providers ETF  53.01  + 1.81%   704.493M     XMHQ  Invesco S&P MidCap Quality ETF  103.85  + 1.56%   5.691B     ESPO  VanEck Video Gaming and eSports ETF  82.33  + 1.44%   257.02M     PXE  Invesco Dynamic Energy Exploration & Production ETF  32.03  + 1.40%   106.646M     IEO  iShares U.S. Oil & Gas Exploration & Production ETF  100.36  + 1.29%   589.209M    View More    Undervalued Growth Stocks   These highly undervalued equities have strong earnings growth   Company Last Price Avg. Rating    GM  General Motors Company  54.87   -0.44%   Buy      ET  Energy Transfer LP  18.28  + 1.78%   Strong Buy      APA  APA Corporation  22.13  + 0.96%   Hold      KGC  Kinross Gold Corporation  9.97   -0.30%   Buy      LAUR  Laureate Education, Inc.  18.88  + 0.59%        View More
+   WSM  Williams-Sonoma, Inc.  175.04  + 27.54%   Hold      SGPYY  The Sage Group plc  64.70  + 17.55%         LMND  Lemonade, Inc.  46.58  + 16.04%   Underperform      DLB  Dolby Laboratories, Inc.  81.98  + 15.61%         YMM  Full Truck Alliance Co. Ltd.  9.84  + 14.82%
+   TGT  Target Corporation  121.72   -21.41%   Buy      POWL  Powell Industries, Inc.  261.82   -16.12%         DY  Dycom Industries, Inc.  176.56   -12.93%   Strong Buy      FMCCM  Federal Home Loan Mortgage Corporation  15.00   -11.56%         BRPHF  Galaxy Digital Holdings Ltd.  17.31   -10.77%
+
+   NVDA  NVIDIA Corporation  145.89   -0.76%   Strong Buy      MARA  MARA Holdings, Inc.  22.63  + 13.95%   Buy      SMCI  Super Micro Computer, Inc.  25.80   -8.74%   Hold      NIO  NIO Inc.  4.6500  + 0.43%   Buy      GRAB  Grab Holdings Limited  5.66  + 3.66%   Strong Buy
+   IHF  iShares U.S. Healthcare Providers ETF  53.01  + 1.81%   704.493M     XMHQ  Invesco S&P MidCap Quality ETF  103.85  + 1.56%   5.691B     ESPO  VanEck Video Gaming and eSports ETF  82.33  + 1.44%   257.02M     PXE  Invesco Dynamic Energy Exploration & Production ETF  32.03  + 1.40%   106.646M     IEO  iShares U.S. Oil & Gas Exploration & Production ETF  100.36  + 1.29%   589.209M
+   GM  General Motors Company  54.87   -0.44%   Buy      ET  Energy Transfer LP  18.28  + 1.78%   Strong Buy      APA  APA Corporation  22.13  + 0.96%   Hold      KGC  Kinross Gold Corporation  9.97   -0.30%   Buy      LAUR  Laureate Education, Inc.  18.88  + 0.59%
+ Build Your Wealth View More    Editor's Pick   Editor's Pick How to invest in gold in 4 steps Learn how to invest in gold by considering historic behavior and the pros and cons of the metal vs. gold mining stocks and ETFs.   Smart Money Moves     How to insure deposits beyond FDIC's $250,000 coverage limit       How does Nvidia make money?       Money moves to make before the end of the year       Realtor fee rules have changed. Here's what to know.       Yes, you can refinance a HELOC — here's how      More Ways to Save     Get a $200 Amazon gift card with your new Prime Visa card       How to save on trip costs during the holidays with credit cards       Here are the best credit cards for Thanksgiving groceries        9 ways to save money and avoid debt this Black Friday       6 holiday savings tips to keep your budget in check       View More    Best travel credit cardCompare high-yield savings accountsBest CD ratesMortgage calculatorHow much house can I afford?
+
+
+
+ Snapshots     Markets prepare for Nvidia's high-stakes earning report  Here's how shares of Nvidia have reacted to previous reports.    Nvidia to report earnings as AI fever continues Nvidia's earnings could offer insight into the strength of the AI industry.      NVDA         Can Nvidia sustain its growth momentum? Analysts and investors are balancing high expectations with concerns about potential growth limitations.     NVDA         Why Nvidia earnings could be sink-or-swim for the bull market The market rally has been broadening away from Big Tech and Nvidia, its leader.      SOXX      QCOM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copyright © 2024 Yahoo. All rights reserved.
+Dow Jones
+S&P 500
+DAX Index
+Nvidia
+Tesla
+DJT
+Mortgages
+Credit Cards
+Sectors
+Crypto Heatmap
+Biden Economy
+Financial News
+Data Disclaimer
+Help
+Feedback
+Sitemap
+Licensing
+What's New
+About Our Ads
+Terms
+Privacy Policy
+Privacy & Cookie Settings
+S&P 500   5,917.11 +0.13 (+0.00%)
+
+
+Dow 30   43,408.47 +139.53 (+0.32%)
+
+
+Nasdaq   18,966.14 -21.33 (-0.11%)
+
+
+Russell 2000   2,325.53 +0.71 (+0.03%)
+
+
+Crude Oil   68.95 +0.08 (+0.12%)
+
+
+Gold   2,652.70 +1.00 (+0.04%)
+
+
+My Portfolios
+ WSM Williams-Sonoma, Inc. 175.04 +37.80 (+27.54%)
+
+
+ SGPYY The Sage Group plc 64.70 +9.66 (+17.55%)
+
+
+ LMND Lemonade, Inc. 46.58 +6.44 (+16.04%)
+
+
+ DLB Dolby Laboratories, Inc. 81.98 +11.07 (+15.61%)
+
+
+ YMM Full Truck Alliance Co. Ltd. 9.84 +1.27 (+14.82%)
+
+
+ TGT Target Corporation 121.72 -33.16 (-21.41%)
+
+
+ POWL Powell Industries, Inc. 261.82 -50.32 (-16.12%)
+
+
+ DY Dycom Industries, Inc. 176.56 -26.23 (-12.93%)
+
+
+ FMCCM Federal Home Loan Mortgage Corporation 15.00 -1.96 (-11.56%)
+
+
+ BRPHF Galaxy Digital Holdings Ltd. 17.31 -2.09 (-10.77%)
+
+
+ NVDA NVIDIA Corporation 145.89 -1.12 (-0.76%)
+
+
+ MARA MARA Holdings, Inc. 22.63 +2.77 (+13.95%)
+
+
+ SMCI Super Micro Computer, Inc. 25.80 -2.47 (-8.74%)
+
+
+ NIO NIO Inc. 4.6500 +0.0200 (+0.43%)
+
+
+ GRAB Grab Holdings Limited 5.66 +0.20 (+3.66%)
+
+
+ NVDA NVIDIA Corporation 145.89 -1.12 (-0.76%)
+
+
+ SNOW Snowflake Inc. 129.12 -1.12 (-0.86%)
+
+
+ PANW Palo Alto Networks, Inc. 392.89 +4.83 (+1.24%)
+
+
+ TGT Target Corporation 121.72 -33.16 (-21.41%)
+
+
+ WSM Williams-Sonoma, Inc. 175.04 +37.80 (+27.54%)
+
+
+
+Terms
+Privacy Policy
+Privacy & Cookie Settings
+Ad Terms
+Feedback
+#+end_example
 
 ** f
 #+begin_src python :session beautiful_soup_01 :results output
-  price_tags = getElements('a', 'btn-primary')
+  price_tags = get_elements('a', 'btn-primary')
   for i in range(0, len(price_tags)):
       price_tags[i] = re.sub(r'[a-zA-Z]+', '', price_tags[i].text)
 
@@ -50,7 +285,7 @@
 #+RESULTS:
 
 #+begin_src python :session beautiful_soup_01 :results output
-  name_price = getElements('div', 'card-body')
+  name_price = get_elements('div', 'card-body')
   for i in range(0, len(name_price)):
       print(name_price[i].find('h5').text,
             re.sub(r'([a-zA-Z|\s]+)([0-9]+)', r'\2', name_price[i].find('a').text))
@@ -65,7 +300,7 @@
 * ex_02
 ** a) b)
 #+begin_src python :session beautiful_soup_01 :results output
-  rows = getElements('a', 'ticker')
+  rows = get_elements('a', 'ticker')
   result = []
   for row in rows:
       new = re.search(r'([A-Z]+)(\-[A-Z]{3})', row.text).group(1)
@@ -153,12 +388,14 @@
       else:
           return request_fun(upper_limit, upper_limit-lower_limit)
 
-  print(len(recursive_request(9999, 9700, 100)))
+  upper_limit = get_elements('div', 'total', 'https://finance.yahoo.com/markets/crypto/all')
+  upper_limit = int(re.search(r'([a-zA-Z]+\s([0-9]+))', result[0].text).group(2))
+  print(len(recursive_request(upper_limit, upper_limit-250, 100)))
 
 #+end_src
 
 #+RESULTS:
-: here https://finance.yahoo.com/markets/crypto/all/?start=9700&count=99
+: here https://finance.yahoo.com/markets/crypto/all/?start=9749&count=50
 : here https://finance.yahoo.com/markets/crypto/all/?start=9799&count=100
 : here https://finance.yahoo.com/markets/crypto/all/?start=9899&count=100
-: 299
+: 250
