@@ -1,0 +1,52 @@
+* Controlo de versões - git
+
+** (a) Descreva a funcionalidade do comando git checkout -b aula2
+O comando usado cria um branch local com o nome "aula2" com o conteúdo do branch previamente em uso.
+Sem "-b", o comando
+** (b) Descreva o que é um conflito de merge.
+Existe um conflito de merge quando são efetuadas mudanças em código que foi alterado desde o último pull. Ou seja, quando um eventual push de um branch mudaria código que não foi previamente integrado nele através, por exemplo, de um comando pull.
+
+* Expressões regulares
+
+** Escreva uma expressão regular que aceite linhas com a estrutura mostrada nos exemplos seguintes:
+
+Joao Matias : Q1-1;Q2-0;Q3-0.
+
+Fernando: Q1-1;Q2-1.
+
+Maria Rita Santos: Q1-0;Q2-1;Q3-1; Q4-1.
+
+Marta Mendes de Campos :Q1-0.
+
+
+* Módulo re
+
+Considere o seguinte extrato de um filtro de texto em Python:
+
+
+ import re
+
+ linha = input()
+
+ y = re.findall(r'[ ]+[^0-9]+\.', linha)
+
+ if(len(y)>0):
+
+ print("existem ", len(y), " ocorrências, a primeira: '" + y[0] + "'")
+
+ else:
+
+ pass
+
+
+- Diga qual a resposta dada pelo filtro acima se o texto de entrada for
+
+
+linha = "3 hh-+. 345.ola.12. 34 rrr.1.rnhh .89. ghhh ."
+
+
+* Módulo requests e webscrapping
+
+** Ver a alínea f) do exercício 2 do documento ALPCD_BeautifulSoup.pdf
+
+** Treinar a resolução do exercício em papel com o uso do beautifoulsoup!
