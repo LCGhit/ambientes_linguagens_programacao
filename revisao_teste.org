@@ -2,47 +2,64 @@
 
 ** (a) Descreva a funcionalidade do comando git checkout -b aula2
 O comando usado cria um branch local com o nome "aula2" com o conteúdo do branch previamente em uso.
-Sem "-b", o comando
+Sem "-b", o comando tentaria mudar o branch atual para o branch já criado "aula2".
 ** (b) Descreva o que é um conflito de merge.
-Existe um conflito de merge quando são efetuadas mudanças em código que foi alterado desde o último pull. Ou seja, quando um eventual push de um branch mudaria código que não foi previamente integrado nele através, por exemplo, de um comando pull.
+Existe um conflito de merge quando são efetuadas mudanças no código ou ficheiros de um repositório que já foi entretanto alterado desde o último pull. Ou seja, quando um branch com o qual se tenta fazer merge já foi alterado desde o último merge, pelo que as mudanças do branch que modificamos não foram feitas sobre essas novas alterações.
 
 * Expressões regulares
 
 ** Escreva uma expressão regular que aceite linhas com a estrutura mostrada nos exemplos seguintes:
 
-Joao Matias : Q1-1;Q2-0;Q3-0.
+#+begin_src python :results output
+  from re import *
+  var_01 = 'Joao Matias : Q1-1;Q2-0;Q3-0.'
 
-Fernando: Q1-1;Q2-1.
+  var_02 = 'Fernando: Q1-1;Q2-1.'
 
-Maria Rita Santos: Q1-0;Q2-1;Q3-1; Q4-1.
+  var_03 = 'Maria Rita Santos: Q1-0;Q2-1;Q3-1; Q4-1.'
 
-Marta Mendes de Campos :Q1-0.
+  var_04 = 'Marta Mendes de Campos :Q1-0.'
 
+  def matchFunc(string):
+      return search(r'([a-zA-Z]+\s?)+:\s?(Q[0-9]\-[0-9];?\s?)+\.', string)
+
+  print(matchFunc(var_01))
+  print(matchFunc(var_02))
+  print(matchFunc(var_03))
+  print(matchFunc(var_04))
+#+end_src
+
+#+RESULTS:
+: <re.Match object; span=(0, 29), match='Joao Matias : Q1-1;Q2-0;Q3-0.'>
+: <re.Match object; span=(0, 20), match='Fernando: Q1-1;Q2-1.'>
+: <re.Match object; span=(0, 40), match='Maria Rita Santos: Q1-0;Q2-1;Q3-1; Q4-1.'>
+: <re.Match object; span=(0, 29), match='Marta Mendes de Campos :Q1-0.'>
 
 * Módulo re
 
 Considere o seguinte extrato de um filtro de texto em Python:
 
+#+begin_src python :results output
+  import re
 
- import re
+  # linha = input()
+  linha = "3 hh-+. 345.ola.12. 34 rrr.1.rnhh .89. ghhh ."
 
- linha = input()
+  y = re.findall(r'[ ]+[^0-9]+\.', linha)
 
- y = re.findall(r'[ ]+[^0-9]+\.', linha)
+  if(len(y)>0):
 
- if(len(y)>0):
+      print("existem ", len(y), " ocorrências, a primeira: '" + y[0] + "'")
 
- print("existem ", len(y), " ocorrências, a primeira: '" + y[0] + "'")
+  else:
 
- else:
+      pass
+#+end_src
 
- pass
-
-
-- Diga qual a resposta dada pelo filtro acima se o texto de entrada for
+- Diga qual a resposta dada pelo filtro acima se o texto de entrada for "3 hh-+. 345.ola.12. 34 rrr.1.rnhh .89. ghhh ."
 
 
-linha = "3 hh-+. 345.ola.12. 34 rrr.1.rnhh .89. ghhh ."
+
 
 
 * Módulo requests e webscrapping

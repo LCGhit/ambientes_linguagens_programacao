@@ -398,3 +398,10 @@ Feedback
 : here https://finance.yahoo.com/markets/crypto/all/?start=9799&count=100
 : here https://finance.yahoo.com/markets/crypto/all/?start=9899&count=100
 : 250
+
+** f)
+#+begin_src python :session study :results output
+  import requests
+  from bs4 import BeautifulSoup
+
+#+end_src

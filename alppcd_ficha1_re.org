@@ -382,7 +382,7 @@ Define a função `inteiros` que devolve todos os números inteiros presentes nu
 #+end_src
 
 #+RESULTS:
-: 1
+: ['1', '23', '2', '22', '-3', '-54', '567']
 
 
 
