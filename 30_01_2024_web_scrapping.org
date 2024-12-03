@@ -401,7 +401,33 @@ Feedback
 
 ** f)
 #+begin_src python :session study :results output
+  import re
   import requests
   from bs4 import BeautifulSoup
 
+  def soupRequest(url):
+      try:
+          response = requests.get(url, headers={'user-agent':'mozilla'})
+          if (response.status_code == 200):
+              soup = BeautifulSoup(response.text, 'lxml')
+              return soup
+          else:
+              print(f'Erro {response.status_code} - {response.text}')
+              return None
+      except requests.exceptions.RequestException as e:
+          print(f'Erro na requisição: {e}')
+          return None
+
+  def searchHTML(url, element, attribute, myClass=''):
+      soup = soupRequest(url)
+      result = soup.find_all(element, {attribute: myClass})
+      return result
+
+  coins = searchHTML('https://finance.yahoo.com/quote/crm?p=1', 'fin-streamer', 'data-field', 'regularMarketOpen')
+  for element in coins:
+      print(element.text)
+
 #+end_src
+
+#+RESULTS:
+: 297.99
