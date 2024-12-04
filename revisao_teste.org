@@ -56,6 +56,9 @@ Considere o seguinte extrato de um filtro de texto em Python:
       pass
 #+end_src
 
+#+RESULTS:
+: existem  3  ocorrências, a primeira: ' hh-+.'
+
 - Diga qual a resposta dada pelo filtro acima se o texto de entrada for "3 hh-+. 345.ola.12. 34 rrr.1.rnhh .89. ghhh ."
 
 

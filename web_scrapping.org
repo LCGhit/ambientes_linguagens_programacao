@@ -424,6 +424,7 @@ Feedback
       return result
 
   coins = searchHTML('https://finance.yahoo.com/quote/crm?p=1', 'fin-streamer', 'data-field', 'regularMarketOpen')
+
   for element in coins:
       print(element.text)
 
@@ -431,3 +432,25 @@ Feedback
 
 #+RESULTS:
 : 297.99
+** new
+#+begin_src python :results output
+  import re
+  import requests
+  from bs4 import BeautifulSoup
+
+  myDict = {'like': }
+  file = open('quest4.html')
+  # response = requests.get(url, headers={'user-agent':'mozilla'})
+  soup = BeautifulSoup(file, 'lxml')
+  soup_result_01 = soup.find('span')
+  soup_result_02 = soup.find_all('div', {'class': 'user-info'})
+  soup_result_03 = soup_result_02[0].find('span')
+
+  likes = soup.find('div', {'class':'post-buttons'})
+  mySpan = likes.find('span')
+  myDict['likes'].append(re.search(r'\d+', mySpan.text)[0])
+  print(myDict)
+#+end_src
+
+#+RESULTS:
+: {'likes': ['10']}
