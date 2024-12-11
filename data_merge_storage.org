@@ -1,0 +1,42 @@
+* [[file:~/Documents/CD/year_2/semester_01/ambientes_linguagens_programacao_cd/tratamento_datasets/Data_Merge_And_Storage.pdf][Ficha sobre BeautifulSoup, junção, análise e armazenamento de datasets]]
+** Pré-requisitos para a realização da ficha
+*** 1. Download e instalação do MySQL server : https://dev.mysql.com/downloads/installer/
+*** 2. Download e instalação do MySQL workbench : https://dev.mysql.com/downloads/workbench/
+*** 3. Criação de uma base de dados de teste.
+*** 4. Instalação do módulo python mysql.connector
+*** 5. Instalação módulo python mysql-connector-python
+*** 6. Instalação módulo python matplotlib
+
+** Exercı́cio 1 - Junção de datasets
+Tendo como base a página web https://finance.yahoo.com/crypto e os datasets recolhidos no exercı́cio na ficha
+sobre BeautifulSoup, resolva cada uma das alı́neas seguintes:
+*** a) Explore a API https://docs.coincap.io/, de modo a descobrir qual é o endpoint que permite obter o histórico do valor de cada uma das moedas (sugere-se o uso do postman para a exploração).
+
+*** b) Tendo como base os datasets construı́dos e armazenados em csv na alı́nea e) da ficha anterior, consulte a API para o intervalo de tempo presente nas colunas ’data da leitura’ e adicione os valores ao dataset. Complete os dados vindos da API para que não fiquem colunas vazias.
+
+*** c) Tendo como base os datasets construı́dos e armazenados em csv na alı́nea e) da ficha anterior, consulte a API para o intervalo de tempo presente na coluna ’data da leitura’ e verifique que os valores do dataset batem certo com os valores da API. Adicione uma coluna extra chamada ’confianca’, caso o valor bata certo deve colocar 1, caso seja diferente deve colocar -1 e caso não seja possı́vel comparar deve colocar 0. Guarde o csv atualizado.
+
+** Exercı́cio 2 - Armazenamento de dados
+*** a) Crie uma função que recebe como parâmetros o caminho para um ficheiro csv a ser lido e carregue os dados para memória. Utilize os ficheiros criados no exercı́cio 1 com os dados unidos do csv e da API .
+
+*** b) Crie e estabeleça uma conexão à instância mySQL.
+
+*** c) Crie uma tabela com as colunas necessárias para armazenar os dados (atenção aos tipos de dados).
+
+*** d) Insira os dados na tabela.
+
+*** e) Crie uma função que encapsule todo o processo das alı́neas anteriores de maneira a automatizá-lo. Essa função deve receber inputs para o caminho do ficheiro, nome da tabela e credenciais da base de dados.
+
+** Exercı́cio 3 - Visualização e análise de dados
+*** a) Estabeleça ligação à base de dados criada no Exercı́cio 2.
+
+*** b) Selecione todos os dados presentes na tabela criada no Exercı́cio 2.
+
+*** c) Tendo como base os dados selecionados, verifique qual foi o dia em que houve maior variação positiva e negativa do valor de uma determinada criptomoeda.
+
+*** d) Tendo como base os dados selecionados, crie uma função que recebe como parâmetros um certo dia, tipo de criptomoeda e valor investido. A função deve calcular qual o valor atual do investimento.
+
+*** e) Utilizando o matplotlib, crie os seguintes gráficos:
+**** • Valor de uma determinada moeda por intervalo de tempo.
+
+**** • Explore os vários tipos de gráficos que se possam construir de acordo com a análise feita dos dados.

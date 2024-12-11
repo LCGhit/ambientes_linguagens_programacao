@@ -1,6 +1,7 @@
+* [[file:~/Documents/CD/year_2/semester_01/ambientes_linguagens_programacao_cd/teorico_pratica/web_scrapping/ALPCD_BeautifulSoup.pdf][ficha_web_scrapping]]
 * ex_01
 ** a
-#+begin_src python :session beautiful_soup_01 :session colab_code :results output
+#+begin_src python :session colab_code :results output
   import json
   import re
 
@@ -30,16 +31,6 @@
 : Python - Desenvolvimento Web
 : Python - Ciência de dados
 
-** c
-#+begin_src python :session beautiful_soup_01 :session colab_code :results output
-  new = get_elements('https://finance.yahoo.com/', 'div', 'id', 'svelte')
-  for element in new:
-      print(element.text)
-#+end_src
-
-#+RESULTS:
-:               News  Today's news   US   Politics   World   Tech  Reviews and deals  Audio  Computing  Gaming  Health  Home  Phones  Science  TVs     Climate change   Health   Science   2024 election   Originals  The 360     Newsletters    Life  Health  COVID-19  Fall allergies  Health news  Mental health  Relax  Sexual health  Studies  The Unwind     Parenting  Family health  So mini ways     Style and beauty  It Figures  Unapologetically     Horoscopes   Shopping  Buying guides     Food   Travel   Autos   Gift ideas   Buying guides    Entertainment  Celebrity   TV   Movies   Music   How to Watch   Interviews   Videos     Finance  My Portfolio   News  Latest News  Stock Market  Originals  The Morning Brief  Economics  Housing  Earnings  Tech  Crypto  Biden Economy     Markets  Stocks: Most Actives  Stocks: Gainers  Stocks: Losers  Trending Tickers  Futures  World Indices  US Treasury Bonds Rates  Currencies  Crypto  Top ETFs  Top Mutual Funds  Options: Highest Open Interest  Options: Highest Implied Volatility  Sectors  Basic Materials  Communication Services  Consumer Cyclical  Consumer Defensive  Energy  Financial Services  Healthcare  Industrials  Real Estate  Technology  Utilities     Research  Screeners  Screeners Beta  Watchlists  Calendar  Stock Comparison  Advanced Chart  Currency Converter     Personal Finance  Credit Cards  Banking  Best HYSA  CD Rates  Student Loans  Personal Loans  Insurance  Mortgages  Mortgage Calculator  Taxes     Videos  Latest News  Editor's Picks  Investing Insights  Trending Stocks  All Shows  Morning Brief  Opening Bid  Wealth  Invest  ETF Report     Streaming Now    Sports  Fantasy  News  Fantasy football  Best Ball  Pro Pick 'Em  College Pick 'Em  Fantasy baseball  Fantasy hockey  Fantasy basketball  Download the app     Daily fantasy   NFL  News  Scores and schedules  Standings  Stats  Teams  Players  Drafts  Injuries  Odds  Super Bowl  GameChannel  Videos     MLB  News  Scores and schedules  Standings  Stats  Teams  Players  Odds  Videos  World Baseball Classic     NBA  News  Draft  Scores and schedules  Standings  Stats  Teams  Players  Injuries  Videos  Odds  Playoffs     NHL  News  Scores and schedules  Standings  Stats  Teams  Players  Odds  Playoffs     Soccer  News  Scores and schedules  Premier League  MLS  NWSL  Liga MX  CONCACAF League  Champions League  La Liga  Serie A  Bundesliga  Ligue 1  World Cup     College football  News  Scores and schedules  Standings  Rankings  Stats  Teams     Show all  MMA  WNBA  Sportsbook  NCAAF  Tennis  Golf  NASCAR  NCAAB  NCAAW  Boxing  USFL  Cycling  Motorsports  Olympics  Horse racing  GameChannel  Rivals  Newsletters  Podcasts  Videos  RSS  Jobs  Help  World Cup  More news     New on Yahoo Creators Games Tech    Terms  Privacy  Privacy & Cookie Settings   Feedback   © 2024  All rights reserved.  About our ads  Advertising  Careers    Yahoo Finance                                    Yahoo Finance    Search query                  Select edition  USEnglish   US y LATAMEspañol  AustraliaEnglish  CanadaEnglish  CanadaFrançais  DeutschlandDeutsch  FranceFrançais  香港繁中  MalaysiaEnglish  New ZealandEnglish  SingaporeEnglish  台灣繁中  UKEnglish     News   Finance   Sports   More News Today's news  US  Politics  World  Weather  Climate change  Health  Science  2024 election  Originals  Newsletters   Life Health  Parenting  Style and beauty  Horoscopes  Shopping  Food  Travel  Autos  Gift ideas  Buying guides   Entertainment Celebrity  TV  Movies  Music  How to watch  Interviews  Videos   Finance My portfolio  Watchlists  Markets  News  Videos  Screeners  Personal finance  Crypto  Industries   Sports Fantasy  NFL  NBA  MLB  NHL  College football  College basketball  Soccer  MMA  Yahoo Sports AM    New on Yahoo Creators Games Tech    Selected edition   USEnglish            Mail       Sign in       My Portfolio    News    Latest News Stock Market Originals The Morning Brief Economics Housing Earnings Tech Crypto Biden Economy    Markets    Stocks: Most Actives Stocks: Gainers Stocks: Losers Trending Tickers Futures World Indices US Treasury Bonds Rates Currencies Crypto Top ETFs Top Mutual Funds Options: Highest Open Interest Options: Highest Implied Volatility Sectors Basic Materials Communication Services Consumer Cyclical Consumer Defensive Energy Financial Services Healthcare Industrials Real Estate Technology Utilities    Research    Screeners Screeners Beta Watchlists Calendar Stock Comparison Advanced Chart Currency Converter    Personal Finance    Credit Cards Banking Best HYSA CD Rates Student Loans Personal Loans Insurance Mortgages Mortgage Calculator Taxes    Videos    Latest News Editor's Picks Investing Insights Trending Stocks All Shows Morning Brief Opening Bid Wealth Invest ETF Report     Streaming Now    …            S&P 500 6,075.11  -0.19%     Dow 30 44,765.71  -0.55%     Nasdaq 19,700.26  -0.18%     Russell 2000 2,396.17  -1.25%     Crude Oil 68.45  -0.13%     Gold 2,655.00  -0.79%     Silver 31.83  -0.28%     EUR/USD 1.0590  +0.70%     10-Yr Bond 4.1800  0.00%     GBP/USD 1.2759  +0.43%     USD/JPY 150.0290  -0.32%     Bitcoin USD 96,093.16  -2.55%     XRP USD 2.29  -5.06%     FTSE 100 8,349.38  +0.16%     Nikkei 225 39,395.60  +0.30%         Dow leads stock losses with jobs report on deck Stocks pulled back from their record-setting run, with Friday's all-important jobs report looming large.   LIVE  Yahoo Finance • 1 hour ago   ES=F      ^IXIC           Tesla pops as BofA leaves Giga Austin visit bullish   Yahoo Finance • 2 hours ago   TSLA           Trump just gave a new signal he isn't going to let up on Big Tech   Yahoo Finance • 7 hours ago   Z      ZG             Trump keeps baiting the Fed—but Powell's not biting   Fortune • 37 minutes ago     Citigroup promotes 344 executives to managing directors   Reuters • 11 minutes ago   C         Musk's DOGE benefits from being whatever people want it to be   Yahoo Finance • 2 hours ago   TSLA         Chevron to take up to $1.5 billion in fourth-quarter charges   Reuters • 1 hour ago   CVX         Lululemon stock rises on profit beat as company boosts guidance   Yahoo Finance • 58 minutes ago   LULU      XLY         GameStop jumps after cryptic 'Roaring Kitty' post   Reuters • 2 hours ago   GME      RDDT         Judge cites DEI concerns in rejecting Boeing's plea deal with DOJ   Yahoo Finance • 1 hour ago   BA      WMT         View More    Latest   Eli Lilly invests $3B to expand Wisconsin factory to help meet demand for Mounjaro, Zepbound   Associated Press Finance • 8 minutes ago   LLY         El Salvador's president is triumphant after his bet on bitcoin comes true   Associated Press Finance • 17 minutes ago     Bitcoin Options Shows Traders Are Already Hedging After Record Rally to $100,000   Bloomberg • 28 minutes ago     Ulta Beauty raises annual profit forecast, shares rise   Reuters • 31 minutes ago   ULTA         Aviva Nears Preliminary Deal With Direct Line After Bump   Bloomberg • 31 minutes ago   DIISY      AVVIY         White Claw Maker Seeks Cash Boost, Weighs Restructuring   Bloomberg • 33 minutes ago     Brazil charges Volkswagen unit with treating farm workers like slaves decades ago   Reuters • 37 minutes ago   VWAPY         Mutual fund pioneer MFS Investment Management launches first ETFs   Reuters • 39 minutes ago     Popular    New welcome offer: Earn a $400 statement credit and 40,000 points with Southwest credit cards just in time for the holidays   Yahoo Personal Finance • 23 days ago     Bitcoin, crypto stocks fall after token's surge above milestone $100,000 mark   Yahoo Finance • 7 hours ago   COIN      MSTR         'CONGRATULATIONS BITCOINERS!!!': Trump cheers bitcoin rally after cryptocurrency tops $100,000 for first time   Yahoo Finance • 1 hour ago   BTC-USD         Hadley PF Site Sections Test (12/5) - New Article   Yahoo Personal Finance • 2 hours ago     Compare today's 30-year mortgage rates   Yahoo Personal Finance • 3 months ago     Mortgage rates are heading lower — is this a good time to buy a house?   Yahoo Personal Finance • 10 months ago     Mortgage rates tick down again, boosting buying activity   Yahoo Finance • 5 hours ago        Investment Ideas        Top Daily Gainers   Discover equities with the greatest gains during the trading day   Company Last Price Avg. Rating    SOUN  SoundHound AI, Inc.  13.33  + 31.33%         AAL  American Airlines Group Inc.  17.38  + 16.80%   Hold      AUR  Aurora Innovation, Inc.  6.92  + 14.76%   Hold      BF-A  Brown-Forman Corporation  45.11  + 11.66%         BF-B  Brown-Forman Corporation  45.38  + 10.68%   Hold     View More    Top Daily Losers   See equities with the greatest losses during the trading day   Company Last Price Avg. Rating    AVAV  AeroVironment, Inc.  165.62   -15.88%   Strong Buy      AEO  American Eagle Outfitters, Inc.  17.61   -14.26%   Hold      S  SentinelOne, Inc.  24.89   -13.21%   Buy      SNPS  Synopsys, Inc.  515.29   -12.37%   Buy      NCNO  nCino, Inc.  37.28   -12.28%   Buy     View More      StockStory Top Picks  View our Top Picks for the week.
-:         Learn More.     Company Avg. Rating   Learn More     Most Active Stocks   Look at equities with the highest trading volume during the trading day   Company Last Price Avg. Rating    SOUN  SoundHound AI, Inc.  13.33  + 31.33%         PLUG  Plug Power Inc.  2.4500  + 15.02%   Hold      INTC  Intel Corporation  20.80   -5.28%   Hold      NVDA  NVIDIA Corporation  145.06   -0.05%   Strong Buy      LCID  Lucid Group, Inc.  2.0900   -0.48%   Hold     View More    Top ETFs   These are top-performing ETFs in the US by asset value and Morningstar Ratings   Company Last Price Net Assets    FBZ  First Trust Brazil AlphaDEX Fund  10.21  + 1.60%   5.532M     EZA  iShares MSCI South Africa ETF  48.48  + 1.53%   295.86M     USAI  Pacer American Energy Independence ETF  41.46  + 1.50%   77.29M     EWW  iShares MSCI Mexico ETF  52.08  + 1.42%   1.243B     ILF  iShares Latin America 40 ETF  23.47  + 1.38%   1.26B    View More    Undervalued Growth Stocks   These highly undervalued equities have strong earnings growth   Company Last Price Avg. Rating    GM  General Motors Company  53.39  + 0.06%   Buy      ET  Energy Transfer LP  19.07  + 0.47%   Strong Buy      APA  APA Corporation  21.84   -1.62%   Hold      KGC  Kinross Gold Corporation  9.90   -0.40%   Buy      LAUR  Laureate Education, Inc.  18.67   -0.64%        View More          Build Your Wealth View More    Editor's Pick   Editor's Pick Get a $200 Amazon gift card with your new Prime Visa card Here’s how the Prime Visa and its boosted $200 welcome bonus can help you save on Amazon spending ahead of the holidays.   Smart Money Moves     This fintech app just launched a 6% APY cash account       CD vs. mutual fund: Which is a better investment?       How much you should save before you buy a car​?       What to know if your debit card is compromised       10 best high-yield savings accounts for December       More Ways to Save     Chase Sapphire Preferred vs. Capital One Venture: Which is best?       How do tariffs work, and who pays the cost?       What happens if an appraisal comes back lower than the offer?       How to change the name on your house deed       Are mortgage points tax deductible? Here are the rules.       View More    Best travel credit cardCompare high-yield savings accountsBest CD ratesMortgage calculatorHow much house can I afford?     Snapshots     Bitcoin surges past $100,000 for the first time For the first time, Bitcoin has rallied past the $100,000 threshold following Trump's SEC chair nomination.     'CONGRATULATIONS BITCOINERS!!!': Trump cheers rally  Bitcoin's latest milestone is a major win for crypto bulls.     BTC-USD         Crypto is getting the SEC boss it wanted in Paul Atkins The crypto industry keeps racking up wins in the new Trump White House. The latest is the pick of Paul Atkins to run the SEC.     COIN      ETH-USD         What's next for regulation? Nearly a month after Trump's reelection, bitcoin blew past the elusive $100,00 mark and beyond.     ETH-USD      BTC-USD         More News      New welcome offer: Earn a $400 statement credit and 40,000 points with Southwest credit cards just in time for the holidays Southwest credit cards have new welcome offers with elevated rewards — just in time for the holidays and kickstarting your 2025 travel plans.   Yahoo Personal Finance • 23 days ago      Bitcoin, crypto stocks fall after token's surge above milestone $100,000 mark Bitcoin and crypto stocks' latest movement came on the heels of Trump's pick to run the SEC.   Yahoo Finance • 7 hours ago   COIN      MSTR           Lululemon stock rises on profit beat as company boosts full-year outlook Lululemon will reported its third quarter results after the closing bell on Thursday.   Yahoo Finance • 58 minutes ago   LULU      XLY          Stock market today: Dow leads losses as stock rally hits pause, bitcoin pulls back from record above $100,000 The jobs market is under the microscope as Wall Street weighs Powell's bullish view of the economy.    LIVE  Yahoo Finance • 1 hour ago   ES=F      ^IXIC          'CONGRATULATIONS BITCOINERS!!!': Trump cheers bitcoin rally after cryptocurrency tops $100,000 for first time Bitcoin hits $100,000 in a major win for crypto bulls.   Yahoo Finance • 1 hour ago   BTC-USD          Judge cites DEI concerns in rejecting Boeing’s plea deal with DOJ A federal judge rejected a criminal fraud plea deal reached between Boeing and the Justice Department, citing provisions in the agreement that included race as a condition in selecting a corporate monitor.   Yahoo Finance • 1 hour ago   BA      WMT          Bath & Body Works CEO: We've been onshoring to mitigate tariff risks, continue to see choiceful consumers Bath & Body Works aims to win over consumers with various price points as it expects little impact from tariffs.   Yahoo Finance • 1 hour ago   WMT      BBY          Bitcoin just crossed $100,000 for the first time. Wall Street sees $200,000 following soon. On the heels of bitcoin's $100,000 record, Wall Street bulls already see the path toward $200,000.   Yahoo Finance • 2 hours ago   GBTC      IBIT           Tesla stock pops as Giga Austin visit has BofA bullish Tesla stock is popping today on the back of bullish comments from BofA Securities, with the firm’s analysts fresh off a Giga Austin factory visit.   Yahoo Finance • 5 hours ago   TSLA        Hadley PF Site Sections Test (12/5) - New Article Test article for PF Site Sections   Yahoo Personal Finance • 2 hours ago      Elon Musk’s DOGE benefits from being whatever people want it to be Elon Musk and Vivek Ramaswamy received a rapturous welcome to Capitol Hill Thursday as questions piled up about exactly what the goals are for their extra-governmental 'Department of Government Efficiency.'   Yahoo Finance • 2 hours ago   TSLA             November jobs report expected to show hiring rebound, unemployment hold steady at 4.1% The November jobs report will be closely tracked by investors for clues regarding the Federal Reserve's next interest rate decision later in December.   Yahoo Finance • 3 hours ago   ^IXIC      ^GSPC          Compare today's 30-year mortgage rates Current 30-year mortgage rates have inched down since last week, but they might stay relatively high for a while. Lock in your 30-year fixed rate today.   Yahoo Personal Finance • 3 months ago      Mortgage rates are heading lower — is this a good time to buy a house? Mortgage rates are finally inching down, and home inventory is improving. Learn whether the market and your finances make it a good time to buy a house.   Yahoo Personal Finance • 10 months ago       Mortgage rates tick down again, boosting buying activity A small dip in rates is bringing cost-strained buyers back to the market.   Yahoo Finance • 5 hours ago      Mortgage and refinance rates today, December 5, 2024: Lowest rates since October These are today's mortgage and refinance rates. The 30-year and 15-year fixed rates have each dropped by over 10 basis points. Lock in your rate today.   Yahoo Personal Finance • 11 hours ago      Big changes are coming to AI in 2025: Microsoft Microsoft says AI will change in some big ways in 2025.   Yahoo Finance • 5 hours ago   GOOG      MSFT          Why market sentiment shouldn't keep investors up at night Bret Kenwell, eToro US investment and options analyst, emphasized that while market sentiment can swing wildly, it shouldn't derail a long-term investment strategy.   Yahoo Finance • 6 hours ago   ^GSPC          Trump just gave a new signal he isn't going to let up on Big Tech President-elect Donald Trump is making it clear he doesn't intend to ease up on the nation's technology giants once he is back in the Oval Office.   Yahoo Finance • 7 hours ago   Z      ZG          Trump uncertainty could be driving car buyers to act now, Cox says Research firm Cox Automotive found a surprising uptick in new car sales in November, outpacing industry estimates.   Yahoo Finance • 8 hours ago   GM      F           Salesforce CEO Marc Benioff: DOGE has a real shot at cutting costs, and new technologies could help Elon Musk has a good shot at cleaning up government waste by way of DOGE, explains Salesforce co-founder and CEO Marc Benioff.   Yahoo Finance • 9 hours ago   CRM      TSLA          BlackRock sees 'exceptionalism' powering US stocks higher in 2025 BlackRock sees earnings continue to outperform in the US versus the rest of the world throughout 2025, supporting further gains in the stock market.   Yahoo Finance • 12 hours ago   SPY      QQQ          Money market account rates today, December 5, 2024 (up to 5.00% APY) If you’re on the hunt for today’s best money market rates, we’ve narrowed down some of the top offers. Learn more about money market account rates today and how to open an account.   Yahoo Personal Finance • 11 hours ago         CD rates today, December 5, 2024 (top APY reaches 4.42% APY) If you’re on the hunt for today’s best CD rates, we’ve narrowed down some of the top offers. Learn more about CD rates today and how to open an account.   Yahoo Personal Finance • 11 hours ago      Savings interest rates today, December 5, 2024 (up to 4.75% APY) If you’re on the hunt for today’s best savings interest rates, we’ve narrowed down some of the top offers. Learn more about savings interest rates today and how to open an account.   Yahoo Personal Finance • 11 hours ago      This financial planning tool could dent the racial wealth gap The racial wealth gap could be reduced by 10% over three generations if Black households wrote wills at the same rate as white ones, according to a recent study.   Yahoo Finance • 12 hours ago       Crypto is getting the SEC boss it wanted in Paul Atkins The crypto industry keeps racking up wins in the new Trump White House. The latest is the pick of Paul Atkins to run the SEC.   Yahoo Finance • 13 hours ago   COIN      ETH-USD          Elon Musk is getting some (tentative) bipartisan interest as he heads to Capitol Hill There are some stirrings of interest from across the aisle in the new extra-governmental 'Department of Government Efficiency' headed up by Elon Musk and Vivek Ramaswamy.   Yahoo Finance • 13 hours ago   TSLA          Salesforce CEO Marc Benioff to Wall Street: Yes, we are making money on digital agents Salesforce CEO Marc Benioff says the race to create digital worker agents is well underway.   Yahoo Finance • 22 hours ago   IBM      CRM          Chase Sapphire Preferred vs. Capital One Venture: Which offers more value? The most significant differences between these two cards are their reward categories and redemption options — get all the details before you apply.   Yahoo Personal Finance • 21 hours ago      Stock market today: Nasdaq, Dow, S&P 500 hit records as tech surges, Fed's Powell says economy in 'remarkably good shape' Fed Chair Jerome Powell's speech looms large as investors calculate the odds of a December rate cut.   Yahoo Finance • yesterday   ^DJI      ^GSPC          How to change the name on your house deed If you’re a homeowner changing your legal name, you must update the name on your deed accordingly. Learn how to change your name on the house deed.   Yahoo Personal Finance • 22 hours ago       Humanoid robots could create a $7 trillion market in the next 25 years: Citi analysts Humanoid robots could soon be a multitrillion-dollar market, according to a study published by Citi Global Insights analysts.   Yahoo Finance • 23 hours ago   TSLA          How much you should save before you buy a car​? Buying a car is a big financial decision that requires careful planning. So how much should you save before you buy a car? Here’s what to know.   Yahoo Personal Finance • 23 hours ago      Capital One Venture vs. Capital One VentureOne: Is an annual fee worth it? While the Venture and VentureOne cards have similar rewards, they differ in annual fees, welcome offers, and added benefits.   Yahoo Personal Finance • 23 hours ago         AT&T CEO: If Trump slashes taxes, we will invest more in American infrastructure AT&T CEO John Stankey continues to remake the telecom giant.   Yahoo Finance • yesterday   VZ      T          What is a provisional credit, and how does it work? When you dispute a bank account charge, the bank may issue a provisional credit while it investigates. Here’s how a provisional credit works.   Yahoo Personal Finance • yesterday      Airline execs grilled on 'junk fees' in testy Senate hearing: 'Travelers are quite simply fed up' Airline executives defended their business practices in heated exchanges with lawmakers over ancillary travel fees.   Yahoo Finance • yesterday   SAVEQ      ULCC           Powell 'not concerned' Fed could lose independence under Trump 2.0 Federal Reserve Chair Jerome Powell said Wednesday he is 'not concerned' that the central bank could lose its independence during a new Trump administration and is 'confident' he will have a good relationship with the new Treasury secretary.   Yahoo Finance • yesterday      Intel’s CEO shake-up puts foundry plans, CHIPS Act cash at risk Intel's CHIPS Act funding could disappear if the company ditches its plans to expand its manufacturing footprint.   Yahoo Finance • yesterday   GOOG      AMZN          FHA loans: 2025 requirements, limits, and loan types An FHA loan is a good option for first-time home buyers, especially if you have a low credit score. Learn about FHA loan benefits and whether it's right for you.   Yahoo Personal Finance • 11 months ago      Higher prices, extra jobs: Lessons from Trump’s washing machine tariffs Consumers paid more for laundry equipment after Trump imposed tariffs on imports in 2018. It was an extremely costly way to create jobs.   Yahoo Finance • yesterday      Apple CEO Tim Cook asked about his future, says 'hard to imagine life without Apple' After 13 years at the helm, CEO Tim Cook says it's difficult for him to imagine a life without Apple.   Yahoo Finance • yesterday   AAPL          FHA loan limits in 2025: How much can you borrow? The FHA loan limits for 2025 depend on your location and how many units a home has. Find out how much you can borrow with an FHA mortgage loan.   Yahoo Personal Finance • 2 months ago       What is the difference between a home's appraised value and market value? A home’s appraised value and market value don’t always align, and a sale can be difficult if the two numbers are different. Learn how these values affect you.   Yahoo Personal Finance • yesterday      GM China to take $5B hit; 'there will be no comeback story,' expert says The writing was on the wall regarding GM’s woes in China — but now investors have some visibility into it.   Yahoo Finance • yesterday   GM      600104.SS          A tax bill is coming next year. But investors may 'need to wait' for clarity on what's in it. As Republicans map out the early stages of Trump 2.0, a debate is emerging about whether to cut a tax deal quickly or wait until later in 2025.   Yahoo Finance • yesterday         UnitedHealthcare CEO Brian Thompson killed in 'brazen, targeted attack' in Manhattan The CEO of UnitedHealthcare, UnitedHealth's insurance unit, was killed Wednesday morning in a "premeditated, pre-planned, targeted attack," police said.   Yahoo Finance • yesterday   UNH          History says small caps should shine until the US dollar 'wrecking ball' arrives History might be about to work in favor of small caps when it comes to seasonality.   Yahoo Finance • yesterday   ^RUT      ^GSPC          CD rates today, December 4, 2024 (up to 4.42% APY) Looking for the best CD rates available today? Here’s a look at where to find the highest rates and whether now is a good time to invest in a CD.   Yahoo Personal Finance • yesterday               Copyright © 2024 Yahoo. All rights reserved.     POPULAR QUOTES Dow Jones   S&P 500   DAX Index   Nvidia   Tesla   DJT    EXPLORE MORE Mortgages   Credit Cards   Sectors   Crypto Heatmap   Biden Economy   Financial News    ABOUT Data Disclaimer   Help   Feedback   Sitemap   Licensing    What's New   About Our Ads    Terms   and Privacy Policy    Privacy & Cookie Settings                  U.S. markets closed     US    Europe    Asia    Rates    Commodities    Currencies    Cryptocurrencies      S&P 500   6,075.11 -11.38 (-0.19%)            Dow 30   44,765.71 -248.33 (-0.55%)            Nasdaq   19,700.26 -34.86 (-0.18%)            Russell 2000   2,396.17 -30.39 (-1.25%)            Crude Oil   68.45 -0.09 (-0.13%)            Gold   2,655.00 -21.20 (-0.79%)                     My Portfolios   My Portfolios    Sign in to access your portfolio Sign in       Top Gainers      SOUN SoundHound AI, Inc. 13.33 +3.18 (+31.33%)             AAL American Airlines Group Inc. 17.38 +2.50 (+16.80%)             AUR Aurora Innovation, Inc. 6.92 +0.89 (+14.76%)             BF-A Brown-Forman Corporation 45.11 +4.71 (+11.66%)             BF-B Brown-Forman Corporation 45.38 +4.38 (+10.68%)               Top Losers      AVAV AeroVironment, Inc. 165.62 -31.27 (-15.88%)             AEO American Eagle Outfitters, Inc. 17.61 -2.93 (-14.26%)             S SentinelOne, Inc. 24.89 -3.79 (-13.21%)             SNPS Synopsys, Inc. 515.29 -72.71 (-12.37%)             NCNO nCino, Inc. 37.28 -5.22 (-12.28%)               Most Active      SOUN SoundHound AI, Inc. 13.33 +3.18 (+31.33%)             PLUG Plug Power Inc. 2.4500 +0.3200 (+15.02%)             INTC Intel Corporation 20.80 -1.16 (-5.28%)             NVDA NVIDIA Corporation 145.06 -0.07 (-0.05%)             LCID Lucid Group, Inc. 2.0900 -0.0100 (-0.48%)               Trending Tickers      LULU Lululemon Athletica Inc. 344.81 +2.54 (+0.74%)             GME GameStop Corp. 28.63 +1.60 (+5.92%)             ULTA Ulta Beauty, Inc. 392.87 -6.94 (-1.74%)             DOCU DocuSign, Inc. 83.68 -0.31 (-0.37%)             UBER Uber Technologies, Inc. 65.23 -6.93 (-9.60%)               Top Economic Events   Top Economic Events    Portugal      There are no important events for this country at this time.  Select "All" to see top events in other countries or view all events. View All Events         Terms   and Privacy Policy    Privacy & Cookie Settings   Ad Terms   Feedback
 
 ** f
 #+begin_src python :session beautiful_soup_01 :session colab_code :results output
@@ -91,7 +82,7 @@
 : Python - Desenvolvimento Web 5€
 : Python - Ciência de dados 100$
 
-* ex_02
+* ex_02 (from google colab)
 ** a) b)
 #+begin_src python :session beautiful_soup_01 :results output
   rows = get_elements('a', 'ticker')
@@ -173,25 +164,6 @@
 
 #+RESULTS:
 
-** d)
-#+begin_src python :session colab_code :results output
-  def recursive_request(upper_limit, lower_limit, count):
-      if upper_limit-count > lower_limit:
-          return recursive_request(upper_limit-count, lower_limit, count)+request_fun(upper_limit, count)
-      else:
-          return request_fun(upper_limit, upper_limit-lower_limit)
-
-  entries_total = get_elements('div', 'total', 'https://finance.yahoo.com/markets/crypto/all')
-  entries_total = int(re.search(r'([a-zA-Z]+\s([0-9]+))', result[0].text).group(2))
-  print(len(recursive_request(entries_total, entries_total-250, 100)))
-
-#+end_src
-
-#+RESULTS:
-: here https://finance.yahoo.com/markets/crypto/all/?start=9749&count=50
-: here https://finance.yahoo.com/markets/crypto/all/?start=9799&count=100
-: here https://finance.yahoo.com/markets/crypto/all/?start=9899&count=100
-: 250
 
 ** f)
 #+begin_src python :session study :results output
@@ -212,12 +184,12 @@
           print(f'Erro na requisição: {e}')
           return None
 
-  def searchHTML(url, element, attribute, myClass=''):
+  def searchSoup(url, element, attribute, attr_value=''):
       soup = soupRequest(url)
-      result = soup.find_all(element, {attribute: myClass})
+      result = soup.find_all(element, {attribute: attr_value})
       return result
 
-  coins = searchHTML('https://finance.yahoo.com/quote/crm?p=1', 'fin-streamer', 'data-field', 'regularMarketOpen')
+  coins = searchSoup('https://finance.yahoo.com/quote/crm?p=1', 'fin-streamer', 'data-field', 'regularMarketOpen')
 
   for element in coins:
       print(element.text)
@@ -225,7 +197,174 @@
 #+end_src
 
 #+RESULTS:
-: 297.99
+: 360.78
+
+* ex_02
+** c)
+#+begin_src python :session colab_code :results output
+  from datetime import datetime
+
+
+  sigla = get_elements('https://finance.yahoo.com/crypto', 'span', 'class', 'symbol yf-1m808gl')
+  nome = get_elements('https://finance.yahoo.com/crypto', 'div', 'class', 'tw-pl-4 yf-h8l7j7')
+  preco = get_elements('https://finance.yahoo.com/crypto', 'fin-streamer', 'data-field', 'regularMarketPrice')
+  coin_dict = []
+  for i in range(len(sigla)):
+      coin_dict.append(
+          {
+              'sigla': sigla[i].text,
+              'nome': nome[i].text,
+              'preco': preco[i].text,
+              'data_da_leitura': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+          }
+      )
+  for i in range(len(coin_dict)):
+      print(coin_dict[i])
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{'sigla': 'BTC-USD ', 'nome': 'Bitcoin USD ', 'preco': '101,437.47', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'ETH-USD ', 'nome': 'Ethereum USD ', 'preco': '3,828.17', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'USDT-USD ', 'nome': 'Tether USDt USD ', 'preco': '1.0010', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'XRP-USD ', 'nome': 'XRP USD ', 'preco': '2.4234', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'SOL-USD ', 'nome': 'Solana USD ', 'preco': '230.42', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'BNB-USD ', 'nome': 'BNB USD ', 'preco': '708.08', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'DOGE-USD ', 'nome': 'Dogecoin USD ', 'preco': '0.416880', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'USDC-USD ', 'nome': 'USD Coin USD ', 'preco': '0.999988', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'ADA-USD ', 'nome': 'Cardano USD ', 'preco': '1.0853', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'STETH-USD ', 'nome': 'Lido Staked ETH USD ', 'preco': '3,825.43', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'WTRX-USD ', 'nome': 'Wrapped TRON USD ', 'preco': '0.281207', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'TRX-USD ', 'nome': 'TRON USD ', 'preco': '0.281341', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'AVAX-USD ', 'nome': 'Avalanche USD ', 'preco': '47.93', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'SHIB-USD ', 'nome': 'Shiba Inu USD ', 'preco': '0.000029', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'WSTETH-USD ', 'nome': 'Lido wstETH USD ', 'preco': '4,488.16', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'TON11419-USD ', 'nome': 'Toncoin USD ', 'preco': '6.3000', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'LINK-USD ', 'nome': 'Chainlink USD ', 'preco': '23.89', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'DOT-USD ', 'nome': 'Polkadot USD ', 'preco': '9.0605', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'WBTC-USD ', 'nome': 'Wrapped Bitcoin USD ', 'preco': '100,756.54', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'XLM-USD ', 'nome': 'Stellar USD ', 'preco': '0.433063', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'WETH-USD ', 'nome': 'WETH USD ', 'preco': '3,809.17', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'SUI20947-USD ', 'nome': 'Sui USD ', 'preco': '4.3278', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'HBAR-USD ', 'nome': 'Hedera USD ', 'preco': '0.298628', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'BCH-USD ', 'nome': 'Bitcoin Cash USD ', 'preco': '544.58', 'data_da_leitura': '2024-12-11 20:31:10'}
+{'sigla': 'PEPE24478-USD ', 'nome': 'Pepe USD ', 'preco': '0.000025', 'data_da_leitura': '2024-12-11 20:31:10'}
+#+end_example
+
+** d)
+#+begin_src python :session colab_code :results output
+  def recursive_request(upper_limit, lower_limit, count):
+      if upper_limit-count > lower_limit:
+          return recursive_request(upper_limit-count, lower_limit, count)+request_fun(upper_limit, count)
+      else:
+          return request_fun(upper_limit, upper_limit-lower_limit)
+
+  entries_total = get_elements('div', 'total', 'https://finance.yahoo.com/markets/crypto/all')
+  entries_total = int(re.search(r'([a-zA-Z]+\s([0-9]+))', result[0].text).group(2))
+  print(len(recursive_request(entries_total, entries_total-250, 100)))
+
+#+end_src
+
+#+RESULTS:
+: here https://finance.yahoo.com/markets/crypto/all/?start=9749&count=50
+: here https://finance.yahoo.com/markets/crypto/all/?start=9799&count=100
+: here https://finance.yahoo.com/markets/crypto/all/?start=9899&count=100
+: 250
+
+** e)
+#+begin_src python :session colab_code :results output
+  import csv
+
+
+  keys = coin_dict[0].keys()
+  with open('coins.csv', 'w', newline='') as output_file:
+      dict_writer = csv.writer(output_file)
+      dict_writer.writerow(keys)
+      for dictionary in coin_dict:
+          dict_writer.writerow(dictionary.values())
+#+end_src
+
+#+RESULTS:
+
+* ex_03
+*** chatgpt code
+#+begin_src python :results output
+  import re
+  import requests
+  from bs4 import BeautifulSoup
+
+  # URL for the updated Yahoo Finance Crypto page
+  url = 'https://finance.yahoo.com/markets/crypto/all/'
+
+  # Send a GET request to the website
+  response = requests.get(url)
+
+  # Check if the request was successful (status code 200)
+  if response.status_code == 200:
+      # Parse the HTML content of the page
+      soup = BeautifulSoup(response.content, 'html.parser')
+
+      # Find the table containing the cryptocurrency data
+      table = soup.find('table', {'class': 'markets-table freeze-col yf-paf8n5 fixedLayout'})
+
+      if table:
+          # Iterate through each row in the table (excluding the header row)
+          rows = table.find_all('tr')[1:]
+
+          # Extract and print the desired data from each row
+          for row in rows:
+              columns = row.find_all('td')
+
+              # Ensure we have the correct number of columns (6 columns)
+              if len(columns) >= 6:
+                  name = columns[0].get_text(strip=True)
+                  symbol = columns[1].get_text(strip=True)
+                  market_cap = columns[3].get_text(strip=True)
+                  values = re.split(r'[\+-]\(?', market_cap)
+                  price = values[0]
+                  change = values[1]
+                  volume = columns[5].get_text(strip=True)
+
+                  # Print the extracted information
+                  print(f"Name: {name}, Symbol: {symbol}, Price: {price}, Change: {change}, Market Cap: {market_cap}, Volume: {volume}")
+      else:
+          print("Could not find the table containing cryptocurrency data.")
+  else:
+      print(f"Failed to retrieve the page. Status code: {response.status_code}")
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Name: BTC-USD, Symbol: Bitcoin USD, Price: 99,394.39, Change: 1,870.45(, Market Cap: 99,394.39+1,870.45(+1.92%), Volume: +1.92%
+Name: ETH-USD, Symbol: Ethereum USD, Price: 3,766.39, Change: 100.54(, Market Cap: 3,766.39+100.54(+2.74%), Volume: +2.74%
+Name: USDT-USD, Symbol: Tether USDt USD, Price: 1.0007, Change: 0.0003(, Market Cap: 1.0007+0.0003(+0.03%), Volume: +0.03%
+Name: XRP-USD, Symbol: XRP USD, Price: 2.4254, Change: 0.2341(, Market Cap: 2.4254+0.2341(+10.69%), Volume: +10.69%
+Name: SOL-USD, Symbol: Solana USD, Price: 227.25, Change: 10.44(, Market Cap: 227.25+10.44(+4.82%), Volume: +4.82%
+Name: BNB-USD, Symbol: BNB USD, Price: 691.73, Change: 2.43(, Market Cap: 691.73+2.43(+0.35%), Volume: +0.35%
+Name: DOGE-USD, Symbol: Dogecoin USD, Price: 0.408293, Change: 0.006776(, Market Cap: 0.408293+0.006776(+1.69%), Volume: +1.69%
+Name: USDC-USD, Symbol: USD Coin USD, Price: 1.0002, Change: 0.0002(, Market Cap: 1.0002+0.0002(+0.02%), Volume: +0.02%
+Name: ADA-USD, Symbol: Cardano USD, Price: 1.0890, Change: 0.0821(, Market Cap: 1.0890+0.0821(+8.15%), Volume: +8.15%
+Name: STETH-USD, Symbol: Lido Staked ETH USD, Price: 3,771.90, Change: 86.75(, Market Cap: 3,771.90+86.75(+2.35%), Volume: +2.35%
+Name: WTRX-USD, Symbol: Wrapped TRON USD, Price: 0.279244, Change: 0.010038(, Market Cap: 0.279244+0.010038(+3.73%), Volume: +3.73%
+Name: TRX-USD, Symbol: TRON USD, Price: 0.279691, Change: 0.011722(, Market Cap: 0.279691+0.011722(+4.37%), Volume: +4.37%
+Name: AVAX-USD, Symbol: Avalanche USD, Price: 47.47, Change: 2.36(, Market Cap: 47.47+2.36(+5.22%), Volume: +5.22%
+Name: SHIB-USD, Symbol: Shiba Inu USD, Price: 0.000028, Change: 0.000002(, Market Cap: 0.000028+0.000002(+6.30%), Volume: +6.30%
+Name: WSTETH-USD, Symbol: Lido wstETH USD, Price: 4,433.96, Change: 38.34(, Market Cap: 4,433.96+38.34(+0.87%), Volume: +0.87%
+Name: TON11419-USD, Symbol: Toncoin USD, Price: 6.2453, Change: 0.4292(, Market Cap: 6.2453+0.4292(+7.38%), Volume: +7.38%
+Name: LINK-USD, Symbol: Chainlink USD, Price: 23.72, Change: 1.19(, Market Cap: 23.72+1.19(+5.29%), Volume: +5.29%
+Name: DOT-USD, Symbol: Polkadot USD, Price: 9.1834, Change: 0.8079(, Market Cap: 9.1834+0.8079(+9.65%), Volume: +9.65%
+Name: WBTC-USD, Symbol: Wrapped Bitcoin USD, Price: 98,797.98, Change: 1,300.62(, Market Cap: 98,797.98+1,300.62(+1.33%), Volume: +1.33%
+Name: XLM-USD, Symbol: Stellar USD, Price: 0.432020, Change: 0.027438(, Market Cap: 0.432020+0.027438(+6.78%), Volume: +6.78%
+Name: WETH-USD, Symbol: WETH USD, Price: 3,742.79, Change: 38.46(, Market Cap: 3,742.79+38.46(+1.04%), Volume: +1.04%
+Name: HBAR-USD, Symbol: Hedera USD, Price: 0.301627, Change: 0.016428(, Market Cap: 0.301627+0.016428(+5.76%), Volume: +5.76%
+Name: SUI20947-USD, Symbol: Sui USD, Price: 3.8606, Change: 0.0091(, Market Cap: 3.8606+0.0091(+0.24%), Volume: +0.24%
+Name: BCH-USD, Symbol: Bitcoin Cash USD, Price: 542.17, Change: 16.82(, Market Cap: 542.17+16.82(+3.20%), Volume: +3.20%
+Name: PEPE24478-USD, Symbol: Pepe USD, Price: 0.000024, Change: 0.000001(, Market Cap: 0.000024-0.000001(-3.72%), Volume: -3.72%
+#+end_example
+
+* study
 ** new
 #+begin_src python :results output
   import re
