@@ -1,3 +1,4 @@
+import pdb
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -16,6 +17,7 @@ if response.status_code == 200:
     # Find the table containing the cryptocurrency data
     table = soup.find('table', {'class': 'markets-table freeze-col yf-paf8n5 fixedLayout'})
 
+    pdb.set_trace()
     if table:
         # Iterate through each row in the table (excluding the header row)
         rows = table.find_all('tr')[1:]

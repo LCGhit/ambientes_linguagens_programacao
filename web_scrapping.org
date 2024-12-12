@@ -205,9 +205,12 @@
   from datetime import datetime
 
 
-  sigla = get_elements('https://finance.yahoo.com/crypto', 'span', 'class', 'symbol yf-1m808gl')
-  nome = get_elements('https://finance.yahoo.com/crypto', 'div', 'class', 'tw-pl-4 yf-h8l7j7')
-  preco = get_elements('https://finance.yahoo.com/crypto', 'fin-streamer', 'data-field', 'regularMarketPrice')
+  sigla = get_elements('https://finance.yahoo.com/crypto',
+                       'span', 'class', 'symbol yf-1m808gl')
+  nome = get_elements('https://finance.yahoo.com/crypto',
+                      'div', 'class', 'tw-pl-4 yf-h8l7j7')
+  preco = get_elements('https://finance.yahoo.com/crypto',
+                       'fin-streamer', 'data-field', 'regularMarketPrice')
   coin_dict = []
   for i in range(len(sigla)):
       coin_dict.append(
@@ -262,15 +265,12 @@
 
   entries_total = get_elements('div', 'total', 'https://finance.yahoo.com/markets/crypto/all')
   entries_total = int(re.search(r'([a-zA-Z]+\s([0-9]+))', result[0].text).group(2))
+  print(len(entries_total))
   print(len(recursive_request(entries_total, entries_total-250, 100)))
 
 #+end_src
 
 #+RESULTS:
-: here https://finance.yahoo.com/markets/crypto/all/?start=9749&count=50
-: here https://finance.yahoo.com/markets/crypto/all/?start=9799&count=100
-: here https://finance.yahoo.com/markets/crypto/all/?start=9899&count=100
-: 250
 
 ** e)
 #+begin_src python :session colab_code :results output
