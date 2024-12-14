@@ -93,3 +93,32 @@ printStars()
 
 #+RESULTS:
 : {0: '"a100"', 1: '"Tude Searas"', 2: '"LEI"', 3: '20', 4: '17', 5: '8', 6: '14\n'}
+
+* factorial and binomial
+#+begin_src python :results output
+  def factorial(num):
+      if num == 0:
+          num = 1
+      if num > 1:
+          return num*factorial(num-1)
+      else:
+          return num
+
+
+  def binom_1(numerator, denominator):
+      result = factorial(numerator)/(factorial(denominator)*factorial(numerator-denominator))
+      return result
+
+
+  def binom_2(numerator, denominator):
+      result = (factorial(numerator)/factorial(numerator-denominator))/factorial(denominator)
+      return result
+
+
+  print('binom_1():', binom_1(9, 2))
+  print('binom_2():', binom_2(9, 2))
+#+end_src
+
+#+RESULTS:
+: binom_1(): 36.0
+: binom_2(): 36.0
